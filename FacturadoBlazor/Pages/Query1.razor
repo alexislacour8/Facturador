@@ -1,0 +1,64 @@
+﻿@page "/query1"
+@using FacturadoBlazor.Service
+@using FacturadorModels.Models
+@inject FacturaService FacturaService
+
+<h3>Facturas del mes anterior (mayores a $10.000)</h3>
+
+@if (facturas == null)
+{
+    <p>Cargando datos...</p>
+}
+else if (facturas.Count == 0)
+{
+    <p>No hay facturas del mes anterior que superen los $10.000.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nº Factura</th>
+                <th>Fecha</th>
+                <th>Monto Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var f in facturas)
+            {
+                var totalFactura = f.Detalles.Sum(d => d.Monto); // suma de los detalles de la factura
+                                                                 <tr>
+                                                                     <td>@f.FC_ID</td>
+                                                                     <td>@f.FechaAlta.ToString("dd/MM/yyyy")</td>
+                                                                     <td>@totalFactura.ToString("$")</td>
+                                                                 </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2"><strong>Total general</strong></td>
+                <td><strong>@facturas.Sum(f => f.Detalles.Sum(d => d.Monto)).ToString("C")</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+}
+
+@code {
+    private List<FacturaVista> facturas;
+
+    protected override async Task OnInitializedAsync()
+    {
+        facturas = await FacturaService.ObtenerFacturaAsync();
+
+        // Filtrar solo facturas del mes anterior mayores a 10000
+        var mesAnterior = DateTime.Now.AddMonths(-1).Month;
+        var añoAnterior = DateTime.Now.AddMonths(-1).Year;
+
+        facturas = facturas
+            .Where(f => f.FechaAlta.Month == mesAnterior && f.FechaAlta.Year == añoAnterior
+                        && f.Detalles.Sum(d => d.Monto) > 10000)
+            .ToList();
+    }
+}
+
+

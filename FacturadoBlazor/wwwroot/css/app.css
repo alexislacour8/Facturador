@@ -5,9 +5,6 @@ body {
     background: #eaeff1;
     color: #444;
 }
-h1:focus {
-    outline: none;
-}
 
 a, .btn-link {
     color: #0071c1;

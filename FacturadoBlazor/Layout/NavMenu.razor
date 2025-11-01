@@ -1,4 +1,4 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿<div class="top-row ps-3 navbar navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">Facturador</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -10,36 +10,68 @@
 <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
     <nav class="nav flex-column">
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            <NavLink class="nav-link text-white" href="" Match="NavLinkMatch.All">
+                <i class="bi bi-house-door"></i> Home
             </NavLink>
         </div>
+
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="clientes">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Clientes
+            <NavLink class="nav-link text-white" href="clientes">
+                <i class="bi bi-person-lines-fill"></i> Clientes
             </NavLink>
         </div>
+
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="articulos">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Articulos
+            <NavLink class="nav-link text-white" href="articulos">
+                <i class="bi bi-box-seam"></i> Artículos
             </NavLink>
         </div>
+
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="factura">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Facturas
+            <NavLink class="nav-link text-white" href="factura">
+                <i class="bi bi-receipt"></i> Facturas
             </NavLink>
         </div>
-       
+
+        <!-- CONSULTAS LINQ -->
+        <div class="nav-item dropdown px-3">
+            <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">
+                <i class="bi bi-search"></i> Consultas LINQ
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li><NavLink class="dropdown-item" href="query1">Query 1 - Facturas > 10.000</NavLink></li>
+                <li><NavLink class="dropdown-item" href="query2">Query 2 - CUIT termina en 8</NavLink></li>
+                <li><NavLink class="dropdown-item" href="query3">Query 3 - Producto AGD_123</NavLink></li>
+            </ul>
+        </div>
+
+        <!-- VISTAS SQL -->
+        <div class="nav-item dropdown px-3">
+            <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">
+                <i class="bi bi-table"></i> Vistas (SQL)
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li><NavLink class="dropdown-item" href="vista1">Vista 1</NavLink></li>
+                <li><NavLink class="dropdown-item" href="vista2">Vista 2</NavLink></li>
+            </ul>
+        </div>
+
+        <!-- STORED PROCEDURES -->
+        <div class="nav-item dropdown px-3">
+            <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">
+                <i class="bi bi-gear"></i> Stored Procedures
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li><NavLink class="dropdown-item" href="sp1">SP 1 - FacturasPorClienteProductoMasVendido</NavLink></li>
+                <li><NavLink class="dropdown-item" href="sp2">SP 2 - Facturas + Detalle</NavLink></li>
+            </ul>
+        </div>
     </nav>
 </div>
 
 @code {
     private bool collapseNavMenu = true;
-
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
+    private void ToggleNavMenu() => collapseNavMenu = !collapseNavMenu;
 }
+
