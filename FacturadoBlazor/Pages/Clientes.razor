@@ -1,0 +1,248 @@
+﻿@page "/clientes"
+@using FacturadorModels.Models
+@using FluentValidation.Results
+@using FacturadoBlazor.ValidarInputs;
+@inject ClienteService ClienteService
+
+
+
+<h3>Clientes</h3>
+
+<!-- Botón para nuevo cliente -->
+<button type="button" class="btn btn-primary mb-3" @onclick="AbrirModal">Nuevo</button>
+
+<div class="col-12">
+    <div class="card listshearpro">
+        <div class="card-body">
+            <div class="row g-3">
+                <h5 class="card-title">
+                    <i class="ri-survey-line"></i>Buscar  Cliente</h5>
+                <input type="text" class="form-control seachrventas" placeholder="🔍 Buscar Cliente por CUIT o Razón Social"
+                       @bind="filtroCliente"
+                       @bind:event="oninput">
+
+                </div>
+               </div>
+             </div>
+         </div>
+<!-- Tabla responsive con Bootstrap -->
+<div class="card" style="width:100%;">
+  <div class="card-body">
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead>
+            <tr>
+                <th>RazonSocial</th>
+                <th>CUIT</th>
+                <th>Dirección</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (clientes != null)
+            {
+              @foreach (var c in clientes)
+                {
+                    <tr>
+                        <td>@c.RazonSocial</td>
+                        <td>@c.Cuit</td>
+                        <td>@c.Direccion</td>
+                        <td>
+                                    <button class="btn btn-sm btn-primary me-2" @onclick="() => EditarCliente(c.Cli_ID)">Editar</button>
+                                    <button class="btn btn-sm btn-danger" @onclick="() => EliminarCliente(c.Cli_ID)">Eliminar</button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center">No hay clientes cargados</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+    </div>
+</div>
+<!-- Modal para crear/editar cliente -->
+@if (mostrarModal)
+{
+    <div class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        @(
+                                            eliminar
+                                            ? "Eliminar Cliente"
+                                            : (editar ? "Editar Cliente" : "Nuevo Cliente")
+                                            )
+                </h5>
+                <button type="button" class="btn-close" @onclick="CerrarModal"></button>
+            </div>
+
+                <div class="modal-body">
+                @if (eliminar)
+                    {
+                        <p>¿Estás seguro de que querés eliminar al cliente <strong>@nuevoCliente.RazonSocial</strong>?</p>
+                    }
+                    else
+                    {
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" @bind="nuevoCliente.RazonSocial" />
+                            @MostrarError("RazonSocial")
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">CUIT</label>
+                            <input type="text" class="form-control" @bind="nuevoCliente.Cuit" />
+                            @MostrarError("Cuit")
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Dirección</label>
+                            <input type="text" class="form-control" @bind="nuevoCliente.Direccion" />
+                            @MostrarError("Direccion")
+                        </div>
+                    }
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" @onclick="CerrarModal">Cancelar</button>
+
+                    @if (eliminar)
+                    {
+                        <button class="btn btn-danger" @onclick="ConfirmarEliminar">Eliminar</button>
+                    }
+                    @if(editar)
+                    {
+                        <button class="btn btn-primary" @onclick="GuardarCliente">Actualizar</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-primary" @onclick="GuardarCliente">Guardar</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<Cliente> clientes;
+    private bool mostrarModal = false;
+    private bool editar = false;
+    private bool eliminar = false;
+    private Cliente nuevoCliente = new Cliente();
+    private string filtroCliente = string.Empty;
+
+    private ClienteValidator validator = new ClienteValidator();
+    private ValidationResult validationResult = new ValidationResult();
+    private List<Cliente> clientesFiltrados =>
+        string.IsNullOrWhiteSpace(filtroCliente)
+            ? clientes
+            : clientes.Where(c =>
+                (!string.IsNullOrEmpty(c.Cuit) && c.Cuit.Contains(filtroCliente, StringComparison.OrdinalIgnoreCase)) ||
+                (!string.IsNullOrEmpty(c.RazonSocial) && c.RazonSocial.Contains(filtroCliente, StringComparison.OrdinalIgnoreCase))
+              ).ToList();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            clientes = await ClienteService.ObtenerClientesAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    private async Task AbrirModal()
+    {
+        nuevoCliente = new Cliente();
+        editar = false;
+        eliminar = false;
+        mostrarModal = true;
+    }
+
+    private void CerrarModal()
+    {
+        mostrarModal = false;
+    }
+
+    private async Task GuardarCliente()
+    {
+        validationResult = validator.Validate(nuevoCliente);
+
+        if (!validationResult.IsValid)
+        {
+            return; // No guarda hasta que los campos sean válidos
+        }
+        if (editar)
+        {
+            await ClienteService.EditarCliente(nuevoCliente.Cli_ID, nuevoCliente);
+        }
+        else
+        {
+            await ClienteService.CrearClienteAsync(nuevoCliente);
+        }
+
+        clientes = await ClienteService.ObtenerClientesAsync();
+        mostrarModal = false;
+    }
+
+    private void EditarCliente(int id)
+    {
+        var cliente = clientes.FirstOrDefault(c => c.Cli_ID == id);
+        if (cliente != null)
+        {
+            nuevoCliente = new Cliente
+            {
+                Cli_ID = cliente.Cli_ID,
+                RazonSocial = cliente.RazonSocial,
+                Cuit = cliente.Cuit,
+                Direccion = cliente.Direccion
+            };
+            editar = true;
+            eliminar = false;
+            mostrarModal = true;
+        }
+    }
+
+    private void EliminarCliente(int id)
+    {
+        var cliente = clientes.FirstOrDefault(c => c.Cli_ID == id);
+        if (cliente != null)
+        {
+            nuevoCliente = cliente;
+            editar = false;
+            eliminar = true;
+            mostrarModal = true;
+        }
+    }
+
+    private async Task ConfirmarEliminar()
+    {
+        await ClienteService.DesactivarCliente(nuevoCliente.Cli_ID);
+        clientes = await ClienteService.ObtenerClientesAsync();
+        mostrarModal = false;
+    }
+    private RenderFragment MostrarError(string campo) => builder =>
+    {
+        var errores = validationResult.Errors
+            .Where(e => e.PropertyName == campo)
+            .Select(e => e.ErrorMessage)
+            .ToList();
+
+        if (errores.Any())
+        {
+            builder.OpenElement(0, "div");
+            builder.AddAttribute(1, "class", "text-danger small mt-1");
+            builder.AddContent(2, string.Join(", ", errores));
+            builder.CloseElement();
+        }
+    };
+}
+
+

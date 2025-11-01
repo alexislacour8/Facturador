@@ -1,0 +1,460 @@
+﻿@page "/factura"
+
+@using FacturadoBlazor.Service
+@using FacturadorModels.Models
+@inject FacturaService FacturaService
+@inject ClienteService ClienteService
+@inject ArticuloService ArticuloService
+
+<h3>Facturas</h3>
+
+<!-- 🔔 Alerta superior -->
+
+
+<button type="button" class="btn btn-primary mb-3" @onclick="AbrirCrearFacturaModal">Nuevo</button>
+<div class="card" style="width:95%;">
+  <div class="card-body">
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead>
+            <tr>
+                <th>NºFactura</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (facturas != null && facturas.Any())
+            {
+                @foreach (var a in facturas)
+                {
+                    <tr>
+                        <td>@a.FC_ID</td>
+                        <td>@a.FechaAlta.ToString("yyyy-MM-dd")</td>
+                        <td>@a.Estado</td>
+                        <td>
+                            <button class="btn btn-sm btn-info" @onclick="() => VerDetalle(a)">Ver detalle</button>
+                            <button class="btn btn-sm btn-primary me-2" @onclick="() => AbrirEditarFacturaModal(a)">Editar</button>
+                            <button class="btn btn-sm btn-danger" @onclick="() => AbrirEliminarFacturaModal(a)">Eliminar</button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center">No hay Facturas cargadas</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+
+<!-- Modal: Detalle de Factura -->
+@if (mostrarDetalleModal && facturaDetalleSeleccionada != null)
+{
+    <div class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalle Factura #@facturaDetalleSeleccionada.FC_ID</h5>
+                    <button type="button" class="btn-close" @onclick="CerrarDetalleModal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Cliente ID:</strong> @facturaDetalleSeleccionada.Cli_ID</p>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Artículo</th>
+                                <th>Cantidad</th>
+                                <th>Precio Unitario</th>
+                                <th>Monto</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var d in facturaDetalleSeleccionada.Detalles)
+                            {
+                                if (detalleEnEdicion.ART_ID == d.ART_ID)
+                                {
+                                    <tr>
+                                        <td>@d.ART_ID</td>
+                                        <td><input type="number" class="form-control" @bind="detalleEnEdicion.Cant" /></td>
+                                        <td><input type="number" class="form-control" step="0.01" @bind="detalleEnEdicion.Precio" /></td>
+                                        <td>@(detalleEnEdicion.Cant* detalleEnEdicion.Precio)</td>
+                                        <td>
+                                            <button class="btn btn-success btn-sm me-2" @onclick="() => GuardarEdicion(d)">Actualizar</button>
+                                            <button class="btn btn-secondary btn-sm" @onclick="CancelarEdicion">Cancelar</button>
+                                        </td>
+                                    </tr>
+                                }
+                                else if (detalleVistaEliminacion.ART_ID == d.ART_ID)
+                                {
+                                    <tr>
+                                        <td>@d.ART_ID</td>
+                                        <td>@d.Cant</td>
+                                        <td>@d.Precio</td>
+                                        <td>@d.Monto</td>
+                                        <td>
+                                            <button class="btn btn-success btn-sm me-2" @onclick="() => EliminarDetalle(d)">Eliminar</button>
+                                            <button class="btn btn-secondary btn-sm" @onclick="CancelarEliminacion">Cancelar</button>
+                                        </td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td>@d.ART_ID</td>
+                                        <td>@d.Cant</td>
+                                        <td>@d.Precio</td>
+                                        <td>@d.Monto</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary me-2" @onclick="() => EditarDetalle(d)">Editar</button>
+                                            <button class="btn btn-sm btn-danger" @onclick="() => EliminardetalleFactura(d)">Eliminar</button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                    <p><strong>Total Factura:</strong> @facturaDetalleSeleccionada.Detalles.Sum(x => x.Monto)</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" @onclick="CerrarDetalleModal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Modal: Crear Factura -->
+@if (mostrarCrearFacturaModal)
+{
+    <div class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Crear Nueva Factura</h5>
+                    <button type="button" class="btn-close" @onclick="CerrarCrearFacturaModal"></button>
+                </div>
+                <div class="modal-body">
+                    @if (mostrarAlerta)
+                    {
+                        <div class="alert alert-@tipoAlerta alert-dismissible fade show" role="alert">
+                            @mensajeAlerta
+                            <button type="button" class="btn-close" @onclick="() => mostrarAlerta = false"></button>
+                        </div>
+                    }
+                    <div class="mb-3">
+                        <label>Cliente</label>
+                        <select class="form-select @(string.IsNullOrEmpty(nuevaFactura.Cuit) ? "is-invalid" : "")" @bind="nuevaFactura.Cuit" required>
+                            <option value="">--Seleccione un Cliente--</option>
+                            @foreach (var c in clientes)
+                            {
+                                <option value="@c.Cuit">@c.RazonSocial</option>
+                            }
+                        </select>
+                        @if (string.IsNullOrEmpty(nuevaFactura.Cuit))
+                        {
+                            <div class="invalid-feedback">Debe seleccionar un cliente.</div>
+                        }
+                    </div>
+
+                    <div class="mb-3 row g-2 align-items-end">
+                        <div class="col">
+                            <label>Producto</label>
+                            <select class="form-select @(string.IsNullOrEmpty(productoSeleccionado.ART_ID) ? "is-invalid" : "")" @bind="productoSeleccionado.ART_ID" required>
+                                <option value="">--Seleccione un producto--</option>
+                                @foreach (var a in articulos)
+                                {
+                                    <option value="@a.ArtId">@a.Nombre (@a.Precio)</option>
+                                }
+                            </select>
+                            @if (string.IsNullOrEmpty(productoSeleccionado.ART_ID))
+                            {
+                                <div class="invalid-feedback">Seleccione un producto.</div>
+                            }
+                        </div>
+                        <div class="col">
+                            <label>Cantidad</label>
+                            <input type="number" class="form-control @(productoSeleccionado.Cant <= 0 ? "is-invalid" : "")" @bind="productoSeleccionado.Cant" min="1" required />
+                            @if (productoSeleccionado.Cant <= 0)
+                            {
+                                <div class="invalid-feedback">Ingrese una cantidad válida.</div>
+                            }
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-success" @onclick="AgregarProducto">Agregar</button>
+                        </div>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio Unitario</th>
+                                <th>Monto</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var d in nuevaFactura.Detalles)
+                            {
+                                <tr>
+                                    <td>@d.ART_ID</td>
+                                    <td>@d.Cant</td>
+                                    <td>@d.Precio</td>
+                                    <td>@d.Monto</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger" @onclick="() => EliminarProducto(d)">X</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <p><strong>Total:</strong> @nuevaFactura.Detalles.Sum(x => x.Monto)</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" @onclick="CerrarCrearFacturaModal">Cerrar</button>
+                    <button class="btn btn-primary" @onclick="GuardarFactura">Guardar Factura</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- ✅ Modal Editar -->
+@if (mostrarEditarFacturaModal)
+{
+    <div class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Factura #@facturaEditando.FC_ID</h5>
+                    <button type="button" class="btn-close" @onclick="CerrarEditarFacturaModal"></button>
+                </div>
+                <div class="modal-body">
+                    @if (mostrarAlerta)
+                    {
+                        <div class="alert alert-@tipoAlerta alert-dismissible fade show" role="alert">
+                            @mensajeAlerta
+                            <button type="button" class="btn-close" @onclick="() => mostrarAlerta = false"></button>
+                        </div>
+                    }
+                    <div class="mb-3">
+                        <label>Fecha</label>
+                        <input type="date" class="form-control" @bind="facturaEditando.FechaAlta" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" @onclick="CerrarEditarFacturaModal">Cancelar</button>
+                    <button class="btn btn-primary" @onclick="GuardarEdicionFactura">Actualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- ✅ Modal Eliminar -->
+@if (mostrarEliminarFacturaModal)
+{
+    <div class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Eliminar Factura</h5>
+                    <button type="button" class="btn-close" @onclick="CerrarEliminarFacturaModal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Está seguro de eliminar la factura <strong>#@facturaEliminando.FC_ID</strong>?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" @onclick="CerrarEliminarFacturaModal">Cancelar</button>
+                    <button class="btn btn-danger" @onclick="ConfirmarEliminarFactura">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<FacturaVista> facturas;
+    private bool mostrarDetalleModal, mostrarCrearFacturaModal, mostrarEditarFacturaModal, mostrarEliminarFacturaModal;
+    private FacturaVista facturaDetalleSeleccionada, facturaEditando = new(), facturaEliminando = new();
+    private FacturaDetalleVista? detalleEnEdicion = new(), detalleVistaEliminacion = new();
+    private List<Cliente> clientes = new();
+    private List<Articulo> articulos = new();
+    private CreateFactura nuevaFactura = new() { Detalles = new List<FacturaDetalleVista>() };
+    private FacturaDetalleVista productoSeleccionado = new();
+
+    // 🔔 Alerta
+    private string mensajeAlerta = string.Empty;
+    private string tipoAlerta = string.Empty;
+    private bool mostrarAlerta = false;
+
+    private void MostrarAlerta(string mensaje, string tipo = "info")
+    {
+        mensajeAlerta = mensaje;
+        tipoAlerta = tipo;
+        mostrarAlerta = true;
+        _ = Task.Run(async () =>
+        {
+            await Task.Delay(4000);
+            mostrarAlerta = false;
+            await InvokeAsync(StateHasChanged);
+        });
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        facturas = await FacturaService.ObtenerFacturaAsync();
+    }
+
+    private void VerDetalle(FacturaVista factura) { facturaDetalleSeleccionada = factura; mostrarDetalleModal = true; }
+    private void CerrarDetalleModal() { mostrarDetalleModal = false; facturaDetalleSeleccionada = null; }
+
+    private async Task AbrirCrearFacturaModal()
+    {
+        mostrarCrearFacturaModal = true;
+        nuevaFactura = new CreateFactura { Detalles = new List<FacturaDetalleVista>() };
+        clientes = await ClienteService.ObtenerClientesAsync();
+        articulos = await ArticuloService.ObtenerArticuloAsync();
+    }
+    private void CerrarCrearFacturaModal() => mostrarCrearFacturaModal = false;
+
+    private async Task GuardarFactura()
+    {
+        if (string.IsNullOrEmpty(nuevaFactura.Cuit))
+        {
+            MostrarAlerta("Debe seleccionar un cliente.", "warning"); return;
+        }
+        if (nuevaFactura.Detalles.Count == 0)
+        {
+            MostrarAlerta("Debe agregar al menos un producto.", "warning"); return;
+        }
+
+        try
+        {
+            await FacturaService.AddFactura(nuevaFactura);
+            facturas = await FacturaService.ObtenerFacturaAsync();
+            MostrarAlerta("Factura guardada correctamente.", "success");
+            mostrarCrearFacturaModal = false;
+        }
+        catch (Exception ex)
+        {
+            MostrarAlerta($"Error al guardar: {ex.Message}", "danger");
+        }
+    }
+
+    private void EditarDetalle(FacturaDetalleVista d)
+    {
+        detalleEnEdicion = new() { ART_ID = d.ART_ID, Cant = d.Cant, Precio = d.Precio, Monto = d.Monto };
+    }
+    private void CancelarEdicion() => detalleEnEdicion.ART_ID = "";
+    private void GuardarEdicion(FacturaDetalleVista o)
+    {
+        if (detalleEnEdicion != null)
+        {
+            o.Cant = detalleEnEdicion.Cant;
+            o.Precio = detalleEnEdicion.Precio;
+            o.Monto = o.Cant * o.Precio;
+            detalleEnEdicion = null;
+        }
+    }
+
+    private void EliminardetalleFactura(FacturaDetalleVista d)
+    {
+        detalleVistaEliminacion = new() { ART_ID = d.ART_ID, Cant = d.Cant, Precio = d.Precio, Monto = d.Monto };
+    }
+    private void CancelarEliminacion() => detalleVistaEliminacion.ART_ID = "";
+    private void EliminarDetalle(FacturaDetalleVista d) => facturaDetalleSeleccionada?.Detalles.Remove(d);
+
+    private void AgregarProducto()
+    {
+        if (string.IsNullOrEmpty(productoSeleccionado.ART_ID) || productoSeleccionado.Cant <= 0)
+        {
+            MostrarAlerta("Seleccione un producto y cantidad válida.", "warning"); return;
+        }
+
+        var art = articulos.FirstOrDefault(a => a.ArtId == productoSeleccionado.ART_ID);
+        if (art == null) return;
+
+        var existente = nuevaFactura.Detalles.FirstOrDefault(d => d.ART_ID == art.ArtId);
+        if (existente != null)
+        {
+            existente.Cant += productoSeleccionado.Cant;
+            existente.Monto = existente.Cant * existente.Precio;
+        }
+        else
+        {
+            nuevaFactura.Detalles.Add(new FacturaDetalleVista
+            {
+                ART_ID = art.ArtId,
+                Cant = productoSeleccionado.Cant,
+                Precio = art.Precio,
+                Monto = productoSeleccionado.Cant * art.Precio
+            });
+        }
+        productoSeleccionado = new();
+    }
+
+    private void EliminarProducto(FacturaDetalleVista d) => nuevaFactura.Detalles.Remove(d);
+
+    private void AbrirEditarFacturaModal(FacturaVista f)
+    {
+        facturaEditando = new() { FC_ID = f.FC_ID, Cli_ID = f.Cli_ID, FechaAlta = f.FechaAlta, Estado = f.Estado,Detalles =f.Detalles };
+        mostrarEditarFacturaModal = true;
+    }
+    private void CerrarEditarFacturaModal() => mostrarEditarFacturaModal = false;
+
+    private async Task GuardarEdicionFactura()
+    {
+        if (facturaEditando.FechaAlta == DateTime.MinValue)
+        {
+            MostrarAlerta("Ingrese una fecha válida.", "warning"); return;
+        }
+
+        try
+        {
+            await FacturaService.UpdateFactura(facturaEditando, facturaEditando.FC_ID);
+
+            facturas = await FacturaService.ObtenerFacturaAsync();
+
+            MostrarAlerta("Factura actualizada.", "success");
+            mostrarEditarFacturaModal = false;
+
+            // 👇 Forzar refresco de la interfaz
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            MostrarAlerta($"Error al actualizar: {ex.Message}", "danger");
+        }
+    }
+
+    private void AbrirEliminarFacturaModal(FacturaVista f)
+    {
+        facturaEliminando = f; mostrarEliminarFacturaModal = true;
+    }
+    private void CerrarEliminarFacturaModal() => mostrarEliminarFacturaModal = false;
+
+    private async Task ConfirmarEliminarFactura()
+    {
+        try
+        {
+            await FacturaService.DeleteFactura(facturaEliminando.FC_ID);
+            facturas = await FacturaService.ObtenerFacturaAsync();
+            MostrarAlerta("Factura eliminada correctamente.", "success");
+            mostrarEliminarFacturaModal = false;
+        }
+        catch (Exception ex)
+        {
+            MostrarAlerta($"Error al eliminar: {ex.Message}", "danger");
+        }
+    }
+}
