@@ -21,6 +21,7 @@ namespace FacturadorApi.Daos
                         join fd in _context.Factura_Detalles on f.FC_ID equals fd.Fact_ID
                         join c in _context.Clientes on f.Cli_ID equals c.Cli_ID
                         join art in _context.Articulos on fd.ART_ID equals art.ART_ID
+                        where f.Estado !="Anulada"
                         orderby f.FC_ID, fd.FC_DTL_ID
                         select new
                         {
