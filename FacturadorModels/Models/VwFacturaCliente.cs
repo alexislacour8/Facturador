@@ -5,7 +5,7 @@ namespace FacturadorModels.Models;
 
 public partial class VwFacturaCliente
 {
-    public int FcId { get; set; }
+    public int FC_ID { get; set; }
 
     public DateOnly FechaAlta { get; set; }
 
