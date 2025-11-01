@@ -24,6 +24,11 @@ namespace FacturadoBlazor.Service
             var response = await _httpClient.GetFromJsonAsync<ApiResponse<List<VwFacturaResuman>>>("https://localhost:7185/api/Factura/Vista1");
             return response?.Data ?? new List<VwFacturaResuman>();
         }
+        public async Task<List<VwFacturaCliente>> FacturasClientes()
+        {
+            var response = await _httpClient.GetFromJsonAsync<ApiResponse<List<VwFacturaCliente>>>("https://localhost:7185/api/Factura/Vista2");
+            return response?.Data ?? new List<VwFacturaCliente>();
+        }
         public async Task<CreateFactura> AddFactura(CreateFactura facturaVista)
         {
             var response = await _httpClient.PostAsJsonAsync("https://localhost:7185/api/Factura", facturaVista);

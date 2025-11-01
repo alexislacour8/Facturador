@@ -1,0 +1,55 @@
+﻿@page "/view2"
+@using FacturadoBlazor.Service
+@using FacturadorModels.Models
+@inject FacturaService FacturaService
+
+<h3>Resumen de todas las facturas Clientes</h3>
+
+@if (facturas == null)
+{
+    <p>Cargando datos...</p>
+}
+else if (facturas.Count == 0)
+{
+    <p>No hay facturas</p>
+}
+else
+{
+    <div class="card" style="width:100%;">
+  <div class="card-body">
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nº Factura</th>
+                <th>Fecha</th>
+                <th>Razon Social</th>
+                <th>CUIT</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var f in facturas)
+            {
+                <tr>
+                    <td>@f.FC_ID</td>
+                    <td>@f.FechaAlta</td>
+                    <td>@f.RazonSocial</td>
+                    <td>@f.Cuit</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+}
+
+@code {
+    private List<VwFacturaCliente> facturas;
+
+    protected override async Task OnInitializedAsync()
+    {
+        facturas = await FacturaService.FacturasClientes();
+
+    }
+}

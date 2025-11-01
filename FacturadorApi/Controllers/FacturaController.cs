@@ -132,5 +132,11 @@ namespace FacturadorApi.Controllers
             var facturas = await this._context.vw_Factura_Resumen.ToListAsync();
             return Ok(new { message = "Datos recibidos", data = facturas });
         }
+        [HttpGet("Vista2")]
+        public async Task<ActionResult<List<vw_Factura_Cliente>>> GetVista2()
+        {
+            var facturas = await this._context.vw_Factura_Clientes.ToListAsync();
+            return Ok(new { message = "Datos recibidos", data = facturas });
+        }
     }
 }

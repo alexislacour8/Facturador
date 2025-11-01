@@ -1,0 +1,70 @@
+﻿@page "/query2"
+@using FacturadoBlazor.Service
+@using FacturadorModels.Models
+@inject FacturaService FacturaService
+@inject ClienteService ClienteService
+<h3>Facturas del mes anterior (mayores a $10.000)</h3>
+
+@if (facturas == null)
+{
+    <p>Cargando datos...</p>
+}
+else if (facturas.Count == 0)
+{
+    <p>No hay facturas del mes anterior que superen los $10.000.</p>
+}
+else
+{
+    <div class="card" style="width:100%;">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nº Factura</th>
+                            <th>Fecha</th>
+                            <th>Razon Social</th>
+                            <th>Cuit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var f in facturasCUIT8)
+                        {
+                            var cliente = clientes.FirstOrDefault(c => c.Cli_ID == f.Cli_ID);
+                            <tr>
+                                <td>@f.FC_ID</td>
+                                <td>@f.FechaAlta.ToString("dd/MM/yyyy")</td>
+                                <td>@cliente?.RazonSocial</td>
+                                <td>@cliente?.Cuit</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2"><strong>Total general</strong></td>
+                            <td><strong>@($"${facturas.Sum(f => f.Detalles.Sum(d => d.Monto)):N2}")</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<FacturaVista> facturas;
+    private List<Cliente> clientes;
+    private List<FacturaVista> facturasCUIT8;
+
+    protected override async Task OnInitializedAsync()
+    {
+        facturas = await FacturaService.ObtenerFacturaAsync();
+        clientes = await ClienteService.ObtenerClientesAsync();
+        // Filtrar solo facturas del mes anterior mayores a 10000
+        facturasCUIT8 = (from f in facturas
+                         join c in clientes on f.Cli_ID equals c.Cli_ID
+                         where c.Cuit.EndsWith("8")
+                         select f).ToList();
+    
+    }
+}
