@@ -260,7 +260,6 @@
     </div>
 }
 
-<!-- ✅ Modal Eliminar -->
 @if (mostrarEliminarFacturaModal)
 {
     <div class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);" tabindex="-1">
@@ -292,7 +291,7 @@
     private CreateFactura nuevaFactura = new() { Detalles = new List<FacturaDetalleVista>() };
     private FacturaDetalleVista productoSeleccionado = new();
 
-    // 🔔 Alerta
+    //Alerta
     private string mensajeAlerta = string.Empty;
     private string tipoAlerta = string.Empty;
     private bool mostrarAlerta = false;
@@ -427,8 +426,6 @@
 
             MostrarAlerta("Factura actualizada.", "success");
             mostrarEditarFacturaModal = false;
-
-            // 👇 Forzar refresco de la interfaz
             StateHasChanged();
         }
         catch (Exception ex)

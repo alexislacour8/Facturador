@@ -1,0 +1,17 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# Node / npm
+node_modules/
+wwwroot/lib/
+
+# Archivos temporales
+*.log
+CopilotIndices/
