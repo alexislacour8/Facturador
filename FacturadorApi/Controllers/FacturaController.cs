@@ -5,6 +5,7 @@ using FacturadorApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static FacturadorApi.FomrsInputs.Forms;
 using static FacturadorApi.FomrsInputs.FormsFactura;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -105,7 +106,7 @@ namespace FacturadorApi.Controllers
             }
         }
 
-       
+
         [HttpPatch("PatchCancelinvoice/{id}")]
         public IActionResult PatchCancelinvoice(int id)
         {
@@ -124,6 +125,12 @@ namespace FacturadorApi.Controllers
             {
                 return StatusCode(500, $"Error al crear la factura: {ex.Message}");
             }
+        }
+        [HttpGet("Vista1")]
+        public async Task<ActionResult<List<vw_Factura_Resuman>>> GetVista1()
+        {
+            var facturas = await this._context.vw_Factura_Resumen.ToListAsync();
+            return Ok(new { message = "Datos recibidos", data = facturas });
         }
     }
 }

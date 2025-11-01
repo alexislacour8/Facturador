@@ -5,7 +5,7 @@ namespace FacturadorModels.Models;
 
 public partial class VwFacturaResuman
 {
-    public int FcId { get; set; }
+    public int FC_ID { get; set; }
 
     public string? Estado { get; set; }
 

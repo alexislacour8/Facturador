@@ -1,0 +1,53 @@
+﻿@page "/view1"
+@using FacturadoBlazor.Service
+@using FacturadorModels.Models
+@inject FacturaService FacturaService
+
+<h3>Resumen de todas las facturas</h3>
+
+@if (facturas == null)
+{
+    <p>Cargando datos...</p>
+}
+else if (facturas.Count == 0)
+{
+    <p>No hay facturas</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nº Factura</th>
+                <th>Fecha</th>
+                <th>Monto Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var f in facturas)
+           {
+                                                                 <tr>
+                                                                    <td>@f.FC_ID</td>
+                                                                     <td>@f.Estado</td>
+                                                                     <td>@f.TotalFactura</td>
+                                                                 </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2"><strong>Total general</strong></td>
+                <td><strong>@($"${facturas.Sum(f => f.TotalFactura):N2}")</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+}
+
+@code {
+    private List<VwFacturaResuman> facturas;
+
+    protected override async Task OnInitializedAsync()
+    {
+        facturas = await FacturaService.ResumenFacturas();
+       
+    }
+}
