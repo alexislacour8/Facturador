@@ -250,6 +250,17 @@
                         <label>Fecha</label>
                         <input type="date" class="form-control" @bind="facturaEditando.FechaAlta" />
                     </div>
+                    <div class="mb-3">
+                        <label>Estado</label>
+                        <select class="form-control" @bind="facturaEditando.Estado">
+                            @foreach (var estado in listaEstados)
+                            {
+                                <option value="@estado">@estado</option>
+                            }
+                        </select>
+                    </div>
+
+
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" @onclick="CerrarEditarFacturaModal">Cancelar</button>
@@ -282,6 +293,7 @@
 }
 
 @code {
+    private List<string> listaEstados = new() { "Pendiente", "Facturado" };
     private List<FacturaVista> facturas;
     private bool mostrarDetalleModal, mostrarCrearFacturaModal, mostrarEditarFacturaModal, mostrarEliminarFacturaModal;
     private FacturaVista facturaDetalleSeleccionada, facturaEditando = new(), facturaEliminando = new();
@@ -406,9 +418,23 @@
 
     private void AbrirEditarFacturaModal(FacturaVista f)
     {
-        facturaEditando = new() { FC_ID = f.FC_ID, Cli_ID = f.Cli_ID, FechaAlta = f.FechaAlta, Estado = f.Estado,Detalles =f.Detalles };
+        // Normalizamos el estado: si viene vacío o nulo, le damos "Pendiente"
+        var estado = string.IsNullOrWhiteSpace(f.Estado)
+            ? "Pendiente"
+            : f.Estado.Trim();
+
+        facturaEditando = new()
+        {
+            FC_ID = f.FC_ID,
+            Cli_ID = f.Cli_ID,
+            FechaAlta = f.FechaAlta,
+            Estado = estado,
+            Detalles = f.Detalles
+        };
+
         mostrarEditarFacturaModal = true;
     }
+
     private void CerrarEditarFacturaModal() => mostrarEditarFacturaModal = false;
 
     private async Task GuardarEdicionFactura()
