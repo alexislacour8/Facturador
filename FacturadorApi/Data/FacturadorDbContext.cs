@@ -24,6 +24,10 @@ public partial class FacturadorDbContext : DbContext
 
     public virtual DbSet<Factura_Detalle> Factura_Detalles { get; set; }
 
+    public virtual DbSet<vw_Factura_Cliente> vw_Factura_Clientes { get; set; }
+
+    public virtual DbSet<vw_Factura_Resuman> vw_Factura_Resumen { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=.;Database=FacturadorDB;Trusted_Connection=True;TrustServerCertificate=True;");
@@ -90,6 +94,26 @@ public partial class FacturadorDbContext : DbContext
                 .HasForeignKey(d => d.Fact_ID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_FD_FC");
+        });
+
+        modelBuilder.Entity<vw_Factura_Cliente>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vw_Factura_Cliente");
+
+            entity.Property(e => e.CUIT).HasMaxLength(50);
+            entity.Property(e => e.RazonSocial).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<vw_Factura_Resuman>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vw_Factura_Resumen");
+
+            entity.Property(e => e.Estado).HasMaxLength(50);
+            entity.Property(e => e.TotalFactura).HasColumnType("decimal(38, 2)");
         });
 
         OnModelCreatingPartial(modelBuilder);

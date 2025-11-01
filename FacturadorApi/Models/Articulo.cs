@@ -13,7 +13,7 @@ public partial class Articulo
 
     public decimal? Stock { get; set; }
 
-    public virtual ICollection<Factura_Detalle> Factura_Detalles { get; set; } = new List<Factura_Detalle>();
-    public bool Deshabilitado { get; set; } = false;
+    public bool Deshabilitado { get; set; }
 
+    public virtual ICollection<Factura_Detalle> Factura_Detalles { get; set; } = new List<Factura_Detalle>();
 }
