@@ -303,6 +303,10 @@
 
 
 
+
+
+
+
     private List<string> listaEstados = new() { "Pendiente", "Facturado" };
     private List<FacturaVista> facturas;
     private bool mostrarDetalleModal, mostrarCrearFacturaModal, mostrarEditarFacturaModal, mostrarEliminarFacturaModal;
@@ -385,7 +389,8 @@
     private async Task GuardarEdicion(FacturaDetalleCliente o)
     {
         await FacturaService.UpdateFacturaDDetalle(facturaDetalleSeleccionada);
-      
+
+        detalleEnEdicion.ART_ID = "";
     }
 
     private void EliminardetalleFactura(FacturaDetalleCliente d)
