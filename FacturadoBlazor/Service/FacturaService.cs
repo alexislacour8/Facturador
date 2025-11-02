@@ -61,7 +61,19 @@ namespace FacturadoBlazor.Service
             return null; // en caso de error
         }
 
+        public async Task<FacturaDetalleCliente> RemoveFacturaDetalle(int cod)
+        {
+            var response = await _httpClient.DeleteAsync(
+                $"https://localhost:7185/api/Factura/RemoveFacturaDetalle/{cod}"
+            );
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<FacturaDetalleCliente>();
+                return result;
+            }
 
+            return null; // en caso de error
+        }
         public async Task<ApiResponseViste> BuscarDatos(DateTime fechaDesde, DateTime fechaHasta, int idCliente)
         {
             string url = $"https://localhost:7185/api/Factura/PorClienteMasVendido?fechaDesde={fechaDesde:yyyy-MM-dd}&fechaHasta={fechaHasta:yyyy-MM-dd}&idCliente={idCliente}";

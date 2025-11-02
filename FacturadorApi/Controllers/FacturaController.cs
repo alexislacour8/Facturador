@@ -142,6 +142,26 @@ namespace FacturadorApi.Controllers
             }
         }
 
+        [HttpDelete("RemoveFacturaDetalle/{idDetalle}")]
+        public IActionResult RemoveFacturaDetalle(int idDetalle)
+        {
+            try
+            {
+                // Buscamos el detalle en la base
+                var detalle = dao_Factura.GetByIdFacturaDetalle(idDetalle);
+                if (detalle == null)
+                    return NotFound("No se encontró el detalle a eliminar.");
+
+                _context.Remove(detalle);
+                _context.SaveChanges();
+
+                return Ok(new { Mensaje = "Detalle eliminado correctamente." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al eliminar el detalle: {ex.Message}");
+            }
+        }
 
 
         [HttpPatch("PatchCancelinvoice/{id}")]

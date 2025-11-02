@@ -381,7 +381,7 @@
     private void CancelarEdicion() => detalleEnEdicion.ART_ID = "";
     private async Task GuardarEdicion(FacturaDetalleCliente o)
     {
-    
+
         foreach (var item in facturaDetalleSeleccionada.Detalles)
         {
 
@@ -394,7 +394,7 @@
 
         detalleEnEdicion.ART_ID = "";
         facturas = await FacturaService.ObtenerFacturaAsync();
-        MostrarAlerta("Factura guardada correctamente.", "success");
+        await MostrarAlerta("Éxito", "FacturaDetalle Actualizo correctamente", "success");
     }
 
     private void EliminardetalleFactura(FacturaDetalleCliente d)
@@ -402,7 +402,13 @@
         detalleVistaEliminacion = new() { ART_ID = d.ART_ID, Cant = d.Cant, Precio = d.Precio, Monto = d.Monto };
     }
     private void CancelarEliminacion() => detalleVistaEliminacion.ART_ID = "";
-    private void EliminarDetalle(FacturaDetalleCliente d) => facturaDetalleSeleccionada?.Detalles.Remove(d);
+    private async Task EliminarDetalle(FacturaDetalleCliente d)
+    {
+        facturaDetalleSeleccionada?.Detalles.Remove(d);
+        await FacturaService.RemoveFacturaDetalle(d.FC_DTL_ID);
+        await MostrarAlerta("Éxito", "FacturaDetalle El item fue removido correctamente", "success");
+    }
+
 
     private void AgregarProducto()
     {
@@ -469,13 +475,13 @@
 
             facturas = await FacturaService.ObtenerFacturaAsync();
 
-            MostrarAlerta("Factura actualizada.", "success");
+            await MostrarAlerta("Éxito", "Factura Creada correctamente", "success");
             mostrarEditarFacturaModal = false;
             StateHasChanged();
         }
         catch (Exception ex)
         {
-            MostrarAlerta($"Error al actualizar: {ex.Message}", "danger");
+            await MostrarAlerta("Error", ex.Message, "error");
         }
     }
 
@@ -491,7 +497,7 @@
         {
             await FacturaService.DeleteFactura(facturaEliminando.FC_ID);
             facturas = await FacturaService.ObtenerFacturaAsync();
-            MostrarAlerta("Factura eliminada correctamente.", "success");
+            await MostrarAlerta("Se ha eliminado", " La Factura correctamente", "success");
             mostrarEliminarFacturaModal = false;
         }
         catch (Exception ex)
