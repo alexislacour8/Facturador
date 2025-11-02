@@ -17,7 +17,7 @@ namespace FacturadorModels.Models
         public int FC_ID { get; set; }
         public string Estado { get; set; }
         public DateTime FechaAlta { get; set; }
-        public List<FacturaDetalleVista> Detalles { get; set; } = new();
+        public List<FacturaDetalleCliente> Detalles { get; set; } = new();
     }
     public class ApiResponseViste
     {
@@ -39,9 +39,22 @@ namespace FacturadorModels.Models
 
         public string Estado { get; set; } = "Facturado";
 
-      
+
         public List<FacturaDetalleVista> Detalles { get; set; } = new();
     }
+    public class FacturaDetalleCliente
+    {
+        public int FC_ID { get; set; }
+        public DateTime FechaAlta { get; set; }
+        public int Cli_ID { get; set; }
+        public string Estado { get; set; }
+        public int FC_DTL_ID { get; set; }
+        public string ART_ID { get; set; }
+        public decimal Cant { get; set; }
+        public decimal Precio { get; set; }
+        public decimal Monto { get; set; }
+    }
+
     public class FacturaDetalleVista
     {
         [JsonPropertyName("fC_DTL_ID")]
@@ -59,6 +72,7 @@ namespace FacturadorModels.Models
         [JsonPropertyName("monto")]
         public decimal Monto { get; set; }
     }
+
     public class ApiResponse<T>
     {
         public string Message { get; set; } = string.Empty;

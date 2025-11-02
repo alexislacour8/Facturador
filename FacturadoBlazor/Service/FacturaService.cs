@@ -1,5 +1,6 @@
 ﻿using Azure;
 using FacturadorModels.Models;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http;
@@ -54,6 +55,20 @@ namespace FacturadoBlazor.Service
 
             throw new Exception("Error al crear cliente: " + response.ReasonPhrase);
         }
+        public async Task<FacturaVista> UpdateFacturaDDetalle(FacturaVista facturaDetalle)
+        {
+            var response = await _httpClient.PutAsJsonAsync("https://localhost:7185/api/Factura/UpdateFacturaDetalle", facturaDetalle);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<FacturaVista>();
+                return result; // ✅ retornamos el resultado correctamente
+            }
+
+            return null; // en caso de error
+        }
+
+
         public async Task<ApiResponseViste> BuscarDatos(DateTime fechaDesde, DateTime fechaHasta, int idCliente)
         {
             string url = $"https://localhost:7185/api/Factura/PorClienteMasVendido?fechaDesde={fechaDesde:yyyy-MM-dd}&fechaHasta={fechaHasta:yyyy-MM-dd}&idCliente={idCliente}";
@@ -68,7 +83,20 @@ namespace FacturadoBlazor.Service
 
             throw new Exception("Error al obtener datos: " + response.ReasonPhrase);
         }
+        public async Task<List<FacturaDetalleCliente>> BuscarClienteFactura(DateTime fechaDesde, DateTime fechaHasta, int idCliente)
+        {
+            string url = $"https://localhost:7185/api/Factura/FactuClienteConDetalle?fechaDesde={fechaDesde:yyyy-MM-dd}&fechaHasta={fechaHasta:yyyy-MM-dd}&idCliente={idCliente}";
 
+            var response = await _httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<List<FacturaDetalleCliente>>();
+                return result;
+            }
+
+            throw new Exception("Error al obtener datos: " + response.ReasonPhrase);
+        }
         public async Task<string> DeleteFactura(int id)
         {
             var response = await _httpClient.PatchAsJsonAsync(

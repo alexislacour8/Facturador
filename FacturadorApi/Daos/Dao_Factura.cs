@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using System.ComponentModel;
 using System.Data;
 using static FacturadorApi.FomrsInputs.Forms;
+using static FacturadorApi.FomrsInputs.FormsFactura;
 namespace FacturadorApi.Daos
 {
     public class Dao_Factura
@@ -90,7 +91,7 @@ namespace FacturadorApi.Daos
                 return null;
             }
         }
-        public Factura_Cabecera UpdateFacturaCabezera(Factura_Cabecera factura , DateTime fecha)
+        public Factura_Cabecera UpdateFacturaCabezera(Factura_Cabecera factura, DateTime fecha)
         {
             try
             {
@@ -98,6 +99,29 @@ namespace FacturadorApi.Daos
 
                 this._context.SaveChanges();
                 return factura;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public FacturaVista UpdateFacturaDetalle(FacturaVista detalle, decimal precio, decimal cantidad, decimal monto)
+        {
+            try
+            {
+
+                foreach (var item in detalle.Detalles)
+                {
+
+                }
+                    //detalle.Precio = precio;
+                    //detalle.Cant= cantidad;
+                    //detalle.Monto = precio * cantidad;
+
+        
+                this._context.SaveChanges();
+                return detalle;
+               
             }
             catch (Exception)
             {
@@ -143,9 +167,14 @@ namespace FacturadorApi.Daos
                 return null;
             }
         }
-        public Factura_Cabecera GetByIdFactura( int id) 
+        public Factura_Cabecera GetByIdFactura(int id)
         {
-            var facturas = this._context.Factura_Cabeceras.FirstOrDefault(f=> f.FC_ID == id);
+            var facturas = this._context.Factura_Cabeceras.FirstOrDefault(f => f.FC_ID == id);
+            return facturas;
+        }
+        public Factura_Detalle GetByIdFacturaDetalle(int id)
+        {
+            var facturas = this._context.Factura_Detalles.FirstOrDefault(f => f.FC_DTL_ID == id);
             return facturas;
         }
         public async Task<(List<FacturaCabecera> facturas, ProductoMasVendido producto)>
@@ -194,6 +223,44 @@ namespace FacturadorApi.Daos
             return (facturas, producto);
         }
 
+        public async Task<List<FacturaDetalleCliente>> ObtenerFacturasConDetalle(DateTime fechaDesde, DateTime fechaHasta, int idCliente)
+        {
+            var lista = new List<FacturaDetalleCliente>();
+         
+            using var connection = _context.Database.GetDbConnection();
+            await connection.OpenAsync();
 
+            using var command = connection.CreateCommand();
+            command.CommandText = "FacturasPorClienteConDetalle";
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.Add(new SqlParameter("@FechaDesde", fechaDesde));
+            command.Parameters.Add(new SqlParameter("@FechaHasta", fechaHasta));
+            command.Parameters.Add(new SqlParameter("@IDCliente", idCliente));
+
+           
+            using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            lista.Add(new FacturaDetalleCliente
+                            {
+                                FC_ID = reader.GetInt32(reader.GetOrdinal("FC_ID")),
+                                FechaAlta = reader.GetDateTime(reader.GetOrdinal("FechaAlta")),
+                                Cli_ID = reader.GetInt32(reader.GetOrdinal("Cli_ID")),
+                                Estado = reader.GetString(reader.GetOrdinal("Estado")),
+                                FC_DTL_ID = reader.GetInt32(reader.GetOrdinal("FC_DTL_ID")),
+                                ART_ID = reader.GetString(reader.GetOrdinal("ART_ID")),
+                                Cant = reader.GetDecimal(reader.GetOrdinal("Cant")),
+                                Precio = reader.GetDecimal(reader.GetOrdinal("Precio")),
+                                Monto = reader.GetDecimal(reader.GetOrdinal("Monto"))
+                            });
+                        }
+                    }
+                
+            
+
+            return lista;
+        }
     }
 }

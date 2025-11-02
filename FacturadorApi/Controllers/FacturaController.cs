@@ -5,6 +5,7 @@ using FacturadorApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static FacturadorApi.Daos.Dao_Factura;
 using static FacturadorApi.FomrsInputs.Forms;
 using static FacturadorApi.FomrsInputs.FormsFactura;
 
@@ -105,6 +106,42 @@ namespace FacturadorApi.Controllers
                 return StatusCode(500, $"Error al crear la factura: {ex.Message}");
             }
         }
+        [HttpPut("UpdateFacturaDetalle")]
+        public IActionResult UpdateFacturaDetalle(FacturaVista facturaDetalle)
+        {
+            try
+            {
+                // Traigo la factura de la base con los detalles
+                var factura = dao_Factura.GetByIdFactura(facturaDetalle.FC_ID);
+                if (factura == null)
+                    return BadRequest("No se encontró la factura");
+
+                // Tomo el primer detalle enviado (puede ser adaptado si envías varios)
+                var detalleNuevo = facturaDetalle.Detalles.FirstOrDefault();
+                if (detalleNuevo == null)
+                    return BadRequest("No se envió ningún detalle");
+
+                // Traigo el detalle viejo de la base
+                var detalleViejo = this.dao_Factura.GetByIdFacturaDetalle(detalleNuevo.FC_DTL_ID);
+                if (detalleViejo == null)
+                    return BadRequest("No se encontró el detalle en la base");
+
+                // Actualizo los campos con los datos nuevos
+                detalleViejo.Cant = detalleNuevo.Cant;
+                detalleViejo.Precio = detalleNuevo.Precio;
+                detalleViejo.Monto = detalleNuevo.Cant * detalleNuevo.Precio;
+
+                // Guardar cambios
+                this._context.SaveChanges();
+
+                return Ok(new { Mensaje = "Detalle actualizado correctamente", detalleViejo });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al editar el detalle: {ex.Message}");
+            }
+        }
+
 
 
         [HttpPatch("PatchCancelinvoice/{id}")]
@@ -149,6 +186,11 @@ namespace FacturadorApi.Controllers
                 ProductoMasVendido = producto
             });
         }
-
+        [HttpGet("FactuClienteConDetalle")]
+        public async Task<IActionResult> GetFacturasConDetalle(DateTime fechaDesde, DateTime fechaHasta, int idCliente)
+        {
+            var facturas = await this.dao_Factura.ObtenerFacturasConDetalle(fechaDesde, fechaHasta, idCliente);
+            return Ok(facturas);
+        }
     }
 }

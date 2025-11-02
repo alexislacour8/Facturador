@@ -60,7 +60,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Detalle Factura #@facturaDetalleSeleccionada.FC_ID</h5>
+                    <h5 class="modal-title">Detalle Factura  #@facturaDetalleSeleccionada.FC_ID</h5>
                     <button type="button" class="btn-close" @onclick="CerrarDetalleModal"></button>
                 </div>
                 <div class="modal-body">
@@ -85,6 +85,7 @@
                                         <td><input type="number" class="form-control" @bind="detalleEnEdicion.Cant" /></td>
                                         <td><input type="number" class="form-control" step="0.01" @bind="detalleEnEdicion.Precio" /></td>
                                         <td>@(detalleEnEdicion.Cant* detalleEnEdicion.Precio)</td>
+                                        
                                         <td>
                                             <button class="btn btn-success btn-sm me-2" @onclick="() => GuardarEdicion(d)">Actualizar</button>
                                             <button class="btn btn-secondary btn-sm" @onclick="CancelarEdicion">Cancelar</button>
@@ -120,7 +121,13 @@
                             }
                         </tbody>
                     </table>
-                    <p><strong>Total Factura:</strong> @facturaDetalleSeleccionada.Detalles.Sum(x => x.Monto)</p>
+                    <p>
+                        <strong>Total Factura:</strong>
+                        @facturaDetalleSeleccionada.Detalles.Sum(d =>
+                        d.ART_ID == detalleEnEdicion?.ART_ID
+                        ? detalleEnEdicion.Cant * detalleEnEdicion.Precio
+                        : d.Monto)
+                </p>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" @onclick="CerrarDetalleModal">Cerrar</button>
@@ -293,11 +300,14 @@
 }
 
 @code {
+
+
+
     private List<string> listaEstados = new() { "Pendiente", "Facturado" };
     private List<FacturaVista> facturas;
     private bool mostrarDetalleModal, mostrarCrearFacturaModal, mostrarEditarFacturaModal, mostrarEliminarFacturaModal;
     private FacturaVista facturaDetalleSeleccionada, facturaEditando = new(), facturaEliminando = new();
-    private FacturaDetalleVista? detalleEnEdicion = new(), detalleVistaEliminacion = new();
+    private FacturaDetalleCliente? detalleEnEdicion = new(), detalleVistaEliminacion = new();
     private List<Cliente> clientes = new();
     private List<Articulo> articulos = new();
     private CreateFactura nuevaFactura = new() { Detalles = new List<FacturaDetalleVista>() };
@@ -326,7 +336,10 @@
         facturas = await FacturaService.ObtenerFacturaAsync();
     }
 
-    private void VerDetalle(FacturaVista factura) { facturaDetalleSeleccionada = factura; mostrarDetalleModal = true; }
+    private void VerDetalle(FacturaVista factura)
+    { facturaDetalleSeleccionada = factura;
+        mostrarDetalleModal = true;
+    }
     private void CerrarDetalleModal() { mostrarDetalleModal = false; facturaDetalleSeleccionada = null; }
 
     private async Task AbrirCrearFacturaModal()
@@ -362,28 +375,25 @@
         }
     }
 
-    private void EditarDetalle(FacturaDetalleVista d)
+    private void EditarDetalle(FacturaDetalleCliente d)
     {
+
         detalleEnEdicion = new() { ART_ID = d.ART_ID, Cant = d.Cant, Precio = d.Precio, Monto = d.Monto };
     }
+
     private void CancelarEdicion() => detalleEnEdicion.ART_ID = "";
-    private void GuardarEdicion(FacturaDetalleVista o)
+    private async Task GuardarEdicion(FacturaDetalleCliente o)
     {
-        if (detalleEnEdicion != null)
-        {
-            o.Cant = detalleEnEdicion.Cant;
-            o.Precio = detalleEnEdicion.Precio;
-            o.Monto = o.Cant * o.Precio;
-            detalleEnEdicion = null;
-        }
+        await FacturaService.UpdateFacturaDDetalle(facturaDetalleSeleccionada);
+      
     }
 
-    private void EliminardetalleFactura(FacturaDetalleVista d)
+    private void EliminardetalleFactura(FacturaDetalleCliente d)
     {
         detalleVistaEliminacion = new() { ART_ID = d.ART_ID, Cant = d.Cant, Precio = d.Precio, Monto = d.Monto };
     }
     private void CancelarEliminacion() => detalleVistaEliminacion.ART_ID = "";
-    private void EliminarDetalle(FacturaDetalleVista d) => facturaDetalleSeleccionada?.Detalles.Remove(d);
+    private void EliminarDetalle(FacturaDetalleCliente d) => facturaDetalleSeleccionada?.Detalles.Remove(d);
 
     private void AgregarProducto()
     {
