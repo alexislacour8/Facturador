@@ -34,12 +34,12 @@ namespace FacturadorApi.Daos
 
                     return null;
                 }
-
+                
                 Cliente cliente = new Cliente();
                 cliente.RazonSocial = RazonSocial;
                 cliente.CUIT = CUIT;
                 cliente.Direccion = direccion;
-                cliente.Deshabilitado = false;
+                cliente.Deshabilitado = RazonSocial.StartsWith("Distribuidora");
 
                 this._context.Clientes.Add(cliente);
                 this._context.SaveChanges();

@@ -3,6 +3,7 @@
 @using FluentValidation.Results
 @using FacturadoBlazor.ValidarInputs;
 @inject ClienteService ClienteService
+@inject IJSRuntime JS
 
 
 
@@ -171,6 +172,8 @@
         mostrarModal = false;
     }
 
+    private string mensajeApi = ""; // Para mostrar errores del servidor
+
     private async Task GuardarCliente()
     {
         validationResult = validator.Validate(nuevoCliente);
@@ -179,18 +182,57 @@
         {
             return; // No guarda hasta que los campos sean válidos
         }
+
+        mensajeApi = ""; // Limpiamos mensaje previo
+
         if (editar)
         {
-            await ClienteService.EditarCliente(nuevoCliente.Cli_ID, nuevoCliente);
+
+            try
+            {
+                var clienteActualizado = await ClienteService.EditarClienteAsync(nuevoCliente.Cli_ID, nuevoCliente);
+                clientes = await ClienteService.ObtenerClientesAsync();
+                mostrarModal = false;
+                mensajeApi = "";
+                await MostrarAlerta("Éxito", "Cliente Actualizado correctamente", "success");
+            }
+            catch (Exception ex)
+            {
+                mensajeApi = ex.Message;
+                await MostrarAlerta("Error", ex.Message, "error");
+            }
+
         }
         else
         {
-            await ClienteService.CrearClienteAsync(nuevoCliente);
+            try
+            {
+                var response = await ClienteService.CrearClienteAsync(nuevoCliente);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    await MostrarAlerta("Éxito", "Cliente creado correctamente", "success");
+                    clientes = await ClienteService.ObtenerClientesAsync();
+                    mostrarModal = false;
+                }
+                else
+                {
+                    // Capturamos el mensaje devuelto por el API (ej: "El CUIT ya existe")
+                    var result = await response.Content.ReadFromJsonAsync<Dictionary<string, string>>();
+                    await MostrarAlerta("Error", result?["message"] ?? "Error desconocido", "error");
+                }
+            }
+            catch (Exception ex)
+            {
+                mensajeApi = ex.Message;
+                await MostrarAlerta("Error", ex.Message, "error");
+            }
         }
 
-        clientes = await ClienteService.ObtenerClientesAsync();
-        mostrarModal = false;
+      
+  
     }
+
 
     private void EditarCliente(int id)
     {
@@ -243,6 +285,17 @@
             builder.CloseElement();
         }
     };
+    private async Task MostrarAlerta(string titulo, string mensaje, string icono = "info")
+    {
+        await JS.InvokeVoidAsync("Swal.fire", new
+        {
+            title = titulo,
+            text = mensaje,
+            icon = icono,
+            confirmButtonText = "Aceptar"
+        });
+    }
+
 }
 
 

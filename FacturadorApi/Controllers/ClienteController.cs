@@ -19,7 +19,7 @@ namespace FacturadorAPI.Controllers
         }
 
         // GET: api/clientes
-        [HttpGet]
+        [HttpGet("GetAllclientes")]
         public IActionResult GetAllclientes()
         {
             var ListClientes = this.dao_Clientes.GetAll();
@@ -30,28 +30,42 @@ namespace FacturadorAPI.Controllers
             return Ok(ListClientes);
         }
 
-        // GET: api/clientes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Cliente>> GetCliente(int id)
-        {
-            var cliente = await _context.Clientes.FindAsync(id);
-            if (cliente == null) return NotFound();
-            return cliente;
-        }
+        //GET: api/clientes/5
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Cliente>> GetCliente(int id)
+        //{
+        //    var cliente = await _context.Clientes.FindAsync(id);
+        //    if (cliente == null) return NotFound();
+        //    return cliente;
+        //}
 
         // POST: api/clientes
-        [HttpPost]
-        public async Task<ActionResult<Cliente>> AddClientes(Cliente cliente)
+        [HttpPost("AddClientes")]
+        public async Task<ActionResult> AddClientes(Cliente cliente)
         {
             try
             {
-                var newClient = this.dao_Clientes.RegsiterClientes(cliente.RazonSocial, cliente.CUIT, cliente.Direccion, cliente.Deshabilitado);
-                if (newClient == null)
+                // Validación de campos obligatorios
+                if (string.IsNullOrWhiteSpace(cliente.RazonSocial) ||
+                    string.IsNullOrWhiteSpace(cliente.CUIT) ||
+                    string.IsNullOrWhiteSpace(cliente.Direccion))
                 {
-                    return StatusCode(500, new { message = "Error al guardar el cliente" });
+                    return BadRequest(new { message = "Todos los campos son obligatorios." });
                 }
 
-                return Ok(new { message = "newClient actualizado con éxito", client = newClient });
+                var newClient = this.dao_Clientes.RegsiterClientes(
+                    cliente.RazonSocial,
+                    cliente.CUIT,
+                    cliente.Direccion,
+                    cliente.Deshabilitado
+                );
+
+                if (newClient == null)
+                {
+                    return BadRequest(new { message = "El CUIT ya existe." });
+                }
+
+                return Ok(new { message = "Cliente creado con éxito", client = newClient });
             }
             catch (Exception ex)
             {
@@ -59,8 +73,9 @@ namespace FacturadorAPI.Controllers
             }
         }
 
+
         // PUT: api/clientes/5
-        [HttpPut("{id}")]
+        [HttpPut("UpdateClientes/{id}")]
         public async Task<IActionResult> UpdateClientes(int id, Cliente cliente)
         {
             try
@@ -92,7 +107,7 @@ namespace FacturadorAPI.Controllers
         }
 
         // DELETE: api/clientes/5
-        [HttpPatch("{id}")]
+        [HttpPatch("DeleteCliente/{id}")]
         public async Task<IActionResult> DeleteCliente(int id)
         {
             try

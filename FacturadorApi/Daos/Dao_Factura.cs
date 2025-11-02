@@ -91,11 +91,12 @@ namespace FacturadorApi.Daos
                 return null;
             }
         }
-        public Factura_Cabecera UpdateFacturaCabezera(Factura_Cabecera factura, DateTime fecha)
+        public Factura_Cabecera UpdateFacturaCabezera(Factura_Cabecera factura, DateTime fecha,string estado)
         {
             try
             {
                 factura.FechaAlta = DateOnly.FromDateTime(fecha);
+                factura.Estado = estado;
 
                 this._context.SaveChanges();
                 return factura;

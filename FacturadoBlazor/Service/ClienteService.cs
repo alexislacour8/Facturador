@@ -15,39 +15,30 @@ public class ClienteService
     public async Task<List<Cliente>> ObtenerClientesAsync()
     {
         // 👇 Cambiá la URL según tu API
-        return await _httpClient.GetFromJsonAsync<List<Cliente>>("https://localhost:7185/api/Clientes");
+        return await _httpClient.GetFromJsonAsync<List<Cliente>>("https://localhost:7185/api/Clientes/GetAllclientes");
     }
-    public async Task<Cliente> CrearClienteAsync(Cliente cliente)
+    public async Task<HttpResponseMessage> CrearClienteAsync(Cliente cliente)
     {
-        var response = await _httpClient.PostAsJsonAsync("https://localhost:7185/api/Clientes", cliente);
+        return await _httpClient.PostAsJsonAsync("https://localhost:7185/api/Clientes/AddClientes", cliente);
+    }
 
-        if (response.IsSuccessStatusCode)
+    public async Task<Cliente> EditarClienteAsync(int id, Cliente cliente)
+    {
+        var response = await _httpClient.PutAsJsonAsync($"https://localhost:7185/api/Clientes/UpdateClientes/{id}", cliente);
+
+        if (!response.IsSuccessStatusCode)
         {
-            // Mapear la respuesta de tu API
-            var result = await response.Content.ReadFromJsonAsync<ApiResponse>();
-            return result.client; // cliente creado
+            var result = await response.Content.ReadFromJsonAsync<Dictionary<string, string>>();
+            throw new Exception(result?["message"] ?? "Error desconocido al editar cliente");
         }
 
-        throw new Exception("Error al crear cliente: " + response.ReasonPhrase);
+        return await response.Content.ReadFromJsonAsync<Cliente>();
     }
-    public async Task<Cliente> EditarCliente(int id, Cliente cliente)
-    {
-        // Serializamos el objeto a JSON
-        var response = await _httpClient.PutAsJsonAsync($"https://localhost:7185/api/Clientes/{id}", cliente);
 
-        if (response.IsSuccessStatusCode)
-        {
-            // Leemos la respuesta como Cliente directamente (si tu API devuelve el cliente actualizado)
-            var clienteActualizado = await response.Content.ReadFromJsonAsync<Cliente>();
-            return clienteActualizado!;
-        }
-
-        throw new Exception($"Error al editar cliente (ID {id}): {response.ReasonPhrase}");
-    }
     public async Task<bool> DesactivarCliente(int id)
     {
         var response = await _httpClient.PatchAsync(
-            $"https://localhost:7185/api/Clientes/{id}", // sin "DeleteCliente"
+            $"https://localhost:7185/api/Clientes/DeleteCliente/{id}", // sin "DeleteCliente"
             null
         );
 

@@ -16,26 +16,17 @@ namespace FacturadoBlazor.Service
         }
         public async Task<List<Articulo>> ObtenerArticuloAsync()
         {
-            // 👇 Cambiá la URL según tu API
-            return await _httpClient.GetFromJsonAsync<List<Articulo>>("https://localhost:7185/api/Articulo");
+          
+            return await _httpClient.GetFromJsonAsync<List<Articulo>>("https://localhost:7185/api/Articulo/GetArticulo");
         }
-        public async Task<Articulo> AddArticuloAsync(Articulo articulo)
+        public async Task<HttpResponseMessage> AddArticuloAsync(Articulo articulo)
         {
-            var response = await _httpClient.PostAsJsonAsync("https://localhost:7185/api/Articulo", articulo);
-
-            if (response.IsSuccessStatusCode)
-            {
-                // Mapear la respuesta de tu API
-                var result = await response.Content.ReadFromJsonAsync<ApiResponse>();
-                return result.Articulo; // cliente creado
-            }
-
-            throw new Exception("Error al crear cliente: " + response.ReasonPhrase);
+            return await _httpClient.PostAsJsonAsync("https://localhost:7185/api/Articulo/AddArticulo", articulo);
         }
         public async Task<Articulo> UpdateArticuloAsync(string cod, Articulo articulo)
         {
             var response = await _httpClient.PutAsJsonAsync(
-      $"https://localhost:7185/api/Articulo/{cod}",
+      $"https://localhost:7185/api/Articulo/UpdateArticulo/{cod}",
       articulo
   );
 

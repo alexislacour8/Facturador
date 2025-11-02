@@ -29,15 +29,21 @@ namespace FacturadorApi.Daos
             {
                 if (string.IsNullOrWhiteSpace(nombre) || precio < 0 || cantidad < 0)
                     return null;
-
-                var articulo = new Articulo
+                var codArt = this._context.Articulos.Where(ar =>ar.ART_ID == idar).FirstOrDefault();
+                if (codArt != null) 
                 {
-                    Nombre = nombre,
-                    Precio = precio,
-                    Stock = cantidad,
-                    ART_ID = idar
-                };
+                    return null;
+                }
+                
 
+                
+                    var articulo = new Articulo
+                    {
+                        Nombre = nombre,
+                        Precio = precio,
+                        Stock = cantidad,
+                        ART_ID = idar
+                    };
                 this._context.Articulos.Add(articulo);
                 this._context.SaveChanges();
                 return articulo;

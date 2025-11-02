@@ -38,7 +38,7 @@ namespace FacturadorApi.Controllers
             return "value";
         }
 
-        [HttpPost]
+        [HttpPost("CreateFactura")]
         public async Task<IActionResult> CreateFactura(FomrsInputs.FormsFactura.Factura factura)
         {
             if (factura == null || factura.Detalles.Count == 0)
@@ -97,7 +97,7 @@ namespace FacturadorApi.Controllers
                 {
                     return BadRequest("No se encontro ninguna factura");
                 }
-                var facturacabezera = this.dao_Factura.UpdateFacturaCabezera(factu, factura.FechaAlta);
+                var facturacabezera = this.dao_Factura.UpdateFacturaCabezera(factu, factura.FechaAlta,factura.Estado);
                 return Ok(new { Mensaje = "Factura editada correctamente", facturacabezera });
 
             }
@@ -111,27 +111,27 @@ namespace FacturadorApi.Controllers
         {
             try
             {
-                // Traigo la factura de la base con los detalles
+               
                 var factura = dao_Factura.GetByIdFactura(facturaDetalle.FC_ID);
                 if (factura == null)
                     return BadRequest("No se encontró la factura");
 
-                // Tomo el primer detalle enviado (puede ser adaptado si envías varios)
+              
                 var detalleNuevo = facturaDetalle.Detalles.FirstOrDefault();
                 if (detalleNuevo == null)
                     return BadRequest("No se envió ningún detalle");
 
-                // Traigo el detalle viejo de la base
+               
                 var detalleViejo = this.dao_Factura.GetByIdFacturaDetalle(detalleNuevo.FC_DTL_ID);
                 if (detalleViejo == null)
                     return BadRequest("No se encontró el detalle en la base");
 
-                // Actualizo los campos con los datos nuevos
+               
                 detalleViejo.Cant = detalleNuevo.Cant;
                 detalleViejo.Precio = detalleNuevo.Precio;
                 detalleViejo.Monto = detalleNuevo.Cant * detalleNuevo.Precio;
 
-                // Guardar cambios
+              
                 this._context.SaveChanges();
 
                 return Ok(new { Mensaje = "Detalle actualizado correctamente", detalleViejo });

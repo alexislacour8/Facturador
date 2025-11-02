@@ -4,7 +4,7 @@
 @using FacturadoBlazor.ValidarInputs;
 @using FluentValidation.Results
 @inject ArticuloService ArticuloService
-
+@inject IJSRuntime JS
 <h3>Articulos</h3>
 
 <!-- Botón para nuevo cliente -->
@@ -140,7 +140,16 @@
             Console.WriteLine(ex.Message);
         }
     }
-
+    private async Task MostrarAlerta(string titulo, string mensaje, string icono = "info")
+    {
+        await JS.InvokeVoidAsync("Swal.fire", new
+        {
+            title = titulo,
+            text = mensaje,
+            icon = icono,
+            confirmButtonText = "Aceptar"
+        });
+    }
     private async Task AbrirModal()
     {
         nuevoArticulo = new Articulo();
@@ -168,11 +177,23 @@
         }
         else
         {
-            await ArticuloService.AddArticuloAsync(nuevoArticulo);
+            var response = await ArticuloService.AddArticuloAsync(nuevoArticulo);
+
+            if (response.IsSuccessStatusCode)
+            {
+                await MostrarAlerta("Éxito", "Articulo creado correctamente", "success");
+                mostrarModal = false;
+            }
+            else
+            {
+            
+                var result = await response.Content.ReadFromJsonAsync<Dictionary<string, string>>();
+                await MostrarAlerta("Error", result?["message"] ?? "Error desconocido", "error");
+            }
         }
 
         articulos = await ArticuloService.ObtenerArticuloAsync();
-        mostrarModal = false;
+
     }
 
     private void EditarCliente(string codigo)

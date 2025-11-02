@@ -5,7 +5,7 @@
 @inject FacturaService FacturaService
 @inject ClienteService ClienteService
 @inject ArticuloService ArticuloService
-
+@inject IJSRuntime JS
 <h3>Facturas</h3>
 
 <!-- 🔔 Alerta superior -->
@@ -157,7 +157,7 @@
                     }
                     <div class="mb-3">
                         <label>Cliente</label>
-                        <select class="form-select @(string.IsNullOrEmpty(nuevaFactura.Cuit) ? "is-invalid" : "")" @bind="nuevaFactura.Cuit" required>
+                        <select class="form-select" @bind="nuevaFactura.Cuit" required>
                             <option value="">--Seleccione un Cliente--</option>
                             @foreach (var c in clientes)
                             {
@@ -169,11 +169,11 @@
                             <div class="invalid-feedback">Debe seleccionar un cliente.</div>
                         }
                     </div>
-
+                    <label>CUIT cliente seleccionado: @nuevaFactura.Cuit</label>
                     <div class="mb-3 row g-2 align-items-end">
                         <div class="col">
                             <label>Producto</label>
-                            <select class="form-select @(string.IsNullOrEmpty(productoSeleccionado.ART_ID) ? "is-invalid" : "")" @bind="productoSeleccionado.ART_ID" required>
+                            <select class="form-select" @bind="productoSeleccionado.ART_ID" required>
                                 <option value="">--Seleccione un producto--</option>
                                 @foreach (var a in articulos)
                                 {
@@ -187,7 +187,7 @@
                         </div>
                         <div class="col">
                             <label>Cantidad</label>
-                            <input type="number" class="form-control @(productoSeleccionado.Cant <= 0 ? "is-invalid" : "")" @bind="productoSeleccionado.Cant" min="1" required />
+                            <input type="number" class="form-control" @bind="productoSeleccionado.Cant" min="1" required />
                             @if (productoSeleccionado.Cant <= 0)
                             {
                                 <div class="invalid-feedback">Ingrese una cantidad válida.</div>
@@ -300,133 +300,6 @@
 }
 
 @code {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private List<string> listaEstados = new() { "Pendiente", "Facturado" };
     private List<FacturaVista> facturas;
     private bool mostrarDetalleModal, mostrarCrearFacturaModal, mostrarEditarFacturaModal, mostrarEliminarFacturaModal;
@@ -490,7 +363,7 @@
         {
             await FacturaService.AddFactura(nuevaFactura);
             facturas = await FacturaService.ObtenerFacturaAsync();
-            MostrarAlerta("Factura guardada correctamente.", "success");
+            await MostrarAlerta("Éxito", "Factura Creada correctamente", "success");
             mostrarCrearFacturaModal = false;
         }
         catch (Exception ex)
@@ -625,5 +498,15 @@
         {
             MostrarAlerta($"Error al eliminar: {ex.Message}", "danger");
         }
+    }
+    private async Task MostrarAlerta(string titulo, string mensaje, string icono = "info")
+    {
+        await JS.InvokeVoidAsync("Swal.fire", new
+        {
+            title = titulo,
+            text = mensaje,
+            icon = icono,
+            confirmButtonText = "Aceptar"
+        });
     }
 }

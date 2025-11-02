@@ -65,7 +65,7 @@ namespace FacturadorApi.Controllers
 
                 if (productosRegistrados == null)
                 {
-                    return StatusCode(500, new { message = "Error al registrar el producto." });
+                    return StatusCode(500, new { message = "Error al registrar el Articulo. este codigo ya existe" });
                 }
 
                 return Ok(new { productos = productosRegistrados, message = "Producto registrado correctamente." });
@@ -85,7 +85,7 @@ namespace FacturadorApi.Controllers
 
         // PUT api/<ArticuloController>/5
         [HttpPut("UpdateArticulo/{id}")]
-        public IActionResult UpdateArticulo(string id, [FromBody] Articuloupdate articulo)
+        public IActionResult UpdateArticulo([FromBody] Articuloupdate articulo , string id)
         {
             try
             {
