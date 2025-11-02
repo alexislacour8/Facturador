@@ -1,10 +1,13 @@
 ﻿using FacturadorApi.Data;
+using FacturadorApi.FomrsInputs;
 using FacturadorApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
-using FacturadorApi.FomrsInputs;
 using System.ComponentModel;
+using System.Data;
+using static FacturadorApi.FomrsInputs.Forms;
 namespace FacturadorApi.Daos
 {
     public class Dao_Factura
@@ -145,6 +148,52 @@ namespace FacturadorApi.Daos
             var facturas = this._context.Factura_Cabeceras.FirstOrDefault(f=> f.FC_ID == id);
             return facturas;
         }
+        public async Task<(List<FacturaCabecera> facturas, ProductoMasVendido producto)>
+       ObtenerFacturasYProductoMasVendido(DateTime fechaDesde, DateTime fechaHasta, int idCliente)
+        {
+            using var connection = _context.Database.GetDbConnection();
+            await connection.OpenAsync();
+
+            using var command = connection.CreateCommand();
+            command.CommandText = "FacturasPorClienteProductoMasVendido";
+            command.CommandType = CommandType.StoredProcedure;
+
+            // Agregamos los parámetros
+            command.Parameters.Add(new SqlParameter("@FechaDesde", fechaDesde));
+            command.Parameters.Add(new SqlParameter("@FechaHasta", fechaHasta));
+            command.Parameters.Add(new SqlParameter("@IDCliente", idCliente));
+
+            var facturas = new List<FacturaCabecera>();
+            ProductoMasVendido producto = null;
+
+            using var reader = await command.ExecuteReaderAsync();
+
+            // 1️⃣ Primer SELECT → facturas
+            while (await reader.ReadAsync())
+            {
+                facturas.Add(new FacturaCabecera
+                {
+                    FC_ID = reader.GetInt32(reader.GetOrdinal("FC_ID")),
+                    Cli_ID = reader.GetInt32(reader.GetOrdinal("Cli_ID")),
+                    FechaAlta = reader.GetDateTime(reader.GetOrdinal("FechaAlta")),
+                    Estado = reader.GetString(reader.GetOrdinal("Estado"))
+                });
+            }
+
+            // 2️⃣ Segundo SELECT → producto más vendido
+            if (await reader.NextResultAsync() && await reader.ReadAsync())
+            {
+                producto = new ProductoMasVendido
+                {
+                    ART_ID = reader.GetString(reader.GetOrdinal("ART_ID")),
+                    Nombre = reader.GetString(reader.GetOrdinal("Nombre")),
+                    TotalCantidad = reader.GetDecimal(reader.GetOrdinal("TotalCantidad"))
+                };
+            }
+
+            return (facturas, producto);
+        }
+
 
     }
 }

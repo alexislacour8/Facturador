@@ -47,13 +47,28 @@ namespace FacturadoBlazor.Service
 
             if (response.IsSuccessStatusCode)
             {
-              
+
                 var result = await response.Content.ReadFromJsonAsync<ApiResponseviste>();
                 return result.FacturaVista;
             }
 
             throw new Exception("Error al crear cliente: " + response.ReasonPhrase);
         }
+        public async Task<ApiResponseViste> BuscarDatos(DateTime fechaDesde, DateTime fechaHasta, int idCliente)
+        {
+            string url = $"https://localhost:7185/api/Factura/PorClienteMasVendido?fechaDesde={fechaDesde:yyyy-MM-dd}&fechaHasta={fechaHasta:yyyy-MM-dd}&idCliente={idCliente}";
+
+            var response = await _httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<ApiResponseViste>();
+                return result!;
+            }
+
+            throw new Exception("Error al obtener datos: " + response.ReasonPhrase);
+        }
+
         public async Task<string> DeleteFactura(int id)
         {
             var response = await _httpClient.PatchAsJsonAsync(
@@ -78,6 +93,11 @@ namespace FacturadoBlazor.Service
         {
             public string message { get; set; }
             public FacturaVista FacturaVista { get; set; }
+        }
+        private class ApiResponsevistedetalle
+        {
+            public string message { get; set; }
+            public FacturaDetalle FacturaDetalle { get; set; }
         }
     }
 }

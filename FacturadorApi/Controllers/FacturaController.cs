@@ -138,5 +138,17 @@ namespace FacturadorApi.Controllers
             var facturas = await this._context.vw_Factura_Clientes.ToListAsync();
             return Ok(new { message = "Datos recibidos", data = facturas });
         }
+        [HttpGet("PorClienteMasVendido")]
+        public async Task<IActionResult> GetPorClienteMasVendido(DateTime fechaDesde, DateTime fechaHasta, int idCliente)
+        {
+            var (facturas, producto) = await this.dao_Factura.ObtenerFacturasYProductoMasVendido(fechaDesde, fechaHasta, idCliente);
+
+            return Ok(new
+            {
+                Facturas = facturas,
+                ProductoMasVendido = producto
+            });
+        }
+
     }
 }

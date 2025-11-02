@@ -1,0 +1,85 @@
+﻿@page "/sp1"
+
+@using FacturadoBlazor.Service
+@using FacturadorModels.Models
+@inject FacturaService FacturaService
+@inject ClienteService ClienteService
+@inject ArticuloService ArticuloService
+
+<h3>Consulta: Facturas y Producto Más Vendido</h3>
+<div class="card" style="width:100%;">
+        <div class="card-body">
+<div class="mb-3">
+    <label>Fecha Desde:</label>
+    <input type="date" @bind="fechaDesde" class="form-control" />
+
+    <label>Fecha Hasta:</label>
+    <input type="date" @bind="fechaHasta" class="form-control" />
+
+    <label>Cliente:</label>
+    <select @bind="idCliente" class="form-select">
+        <option value="">Seleccione...</option>
+        @foreach (var c in clientes)
+        {
+            <option value="@c.Cli_ID">@c.RazonSocial</option>
+        }
+    </select>
+
+    <button class="btn btn-primary mt-2" @onclick="Buscar">Buscar</button>
+</div>
+    </div>
+</div>
+
+
+@if (resultado != null)
+{
+    <h4>Producto más vendido: @resultado.ProductoMasVendido.Nombre (@resultado.ProductoMasVendido.TotalCantidad unidades)</h4>
+ <div class="card" style="width:100%;">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>NºFactura</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var f in resultado.Facturas)
+            {
+                <tr>
+                    <td>@f.FC_ID</td>
+                    <td>@f.Cli_Id</td>
+                    <td>@f.FechaAlta.ToString("dd/MM/yyyy")</td>
+                    <td>@f.Estado</td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private DateTime fechaDesde = DateTime.Now.AddMonths(-1);
+    private DateTime fechaHasta = DateTime.Now;
+    private int idCliente;
+    private List<Cliente> clientes = new();
+    private ApiResponseViste? resultado;
+
+    protected override async Task OnInitializedAsync()
+    {
+        clientes = await ClienteService.ObtenerClientesAsync();
+    }
+
+    private async Task Buscar()
+    {
+        resultado = await FacturaService.BuscarDatos(fechaDesde, fechaHasta, idCliente);
+    }
+}
+
+

@@ -5,11 +5,11 @@ namespace FacturadorModels.Models;
 
 public partial class FacturaCabecera
 {
-    public int FcId { get; set; }
+    public int FC_ID { get; set; }
 
     public DateTime FechaAlta { get; set; }
 
-    public int CliId { get; set; }
+    public int Cli_Id { get; set; }
 
     public string? Estado { get; set; }
 

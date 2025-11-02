@@ -19,6 +19,18 @@ namespace FacturadorModels.Models
         public DateTime FechaAlta { get; set; }
         public List<FacturaDetalleVista> Detalles { get; set; } = new();
     }
+    public class ApiResponseViste
+    {
+        public List<FacturaCabecera> Facturas { get; set; }
+        public ProductoMasVendido ProductoMasVendido { get; set; }
+    }
+
+    public class ProductoMasVendido
+    {
+        public string ART_ID { get; set; }
+        public string Nombre { get; set; }
+        public decimal TotalCantidad { get; set; }
+    }
 
     public class CreateFactura
     {
