@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "FacturadoBlazor",
   "resources": {
-    "hash": "sha256-Gbno5oxXFCg5OhkKKx/h3If4E/kFb3LItUnwxr2fdu4=",
+    "hash": "sha256-u8+SNyFkXkWn4dUG9srkYS1b3vYW+rTmcVvLup4HLGQ=",
     "fingerprinting": {
       "Azure.Core.jvicd3vwq9.wasm": "Azure.Core.wasm",
       "Azure.Identity.fy1anm9tzc.wasm": "Azure.Identity.wasm",
@@ -230,10 +230,10 @@
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "FacturadorModels.kvzbz3sd4c.wasm": "FacturadorModels.wasm",
-      "FacturadorModels.vlnt7fqzqe.pdb": "FacturadorModels.pdb",
-      "FacturadoBlazor.z0b5k0ige3.wasm": "FacturadoBlazor.wasm",
-      "FacturadoBlazor.kvm7f8x97z.pdb": "FacturadoBlazor.pdb"
+      "FacturadorModels.b13o6vx87d.wasm": "FacturadorModels.wasm",
+      "FacturadorModels.wslc23uhzo.pdb": "FacturadorModels.pdb",
+      "FacturadoBlazor.7kd0vqrvfg.wasm": "FacturadoBlazor.wasm",
+      "FacturadoBlazor.wjpzlaueua.pdb": "FacturadoBlazor.pdb"
     },
     "jsModuleNative": {
       "dotnet.native.l4ptthxatg.js": "sha256-ddUN4+taa/Qv7Mr8mLpunJO+0Xw3ViOqBvedhe57/hA="
@@ -472,12 +472,12 @@
       "WindowsBase.ahs9krftg4.wasm": "sha256-bgi2FHdT0ABsUP1yKQQ2AP8qfo1V/bS/4cJFE4OUHX8=",
       "mscorlib.k5iaovx9v7.wasm": "sha256-mEFLDERlY1HMNQHzh68xOPawXvI48O1fHW9PbfXugb4=",
       "netstandard.6sr1qvn64m.wasm": "sha256-Gpf+qEqCYaCB6zqI5sNPIurnfpwRtfcWksgf3CW6mHE=",
-      "FacturadorModels.kvzbz3sd4c.wasm": "sha256-oIZjc+w//8K3Y/3q/NSzf9aOv6Ljls+dWx0HKHHrGLs=",
-      "FacturadoBlazor.z0b5k0ige3.wasm": "sha256-7YROBQ32AQGuuofLp5uIWDnGzd5/G3rcPZ7ytNIKRNU="
+      "FacturadorModels.b13o6vx87d.wasm": "sha256-oSh9eh0HB7fqrdlXWybaSHXG3vEXG0/s/7XYZADm2PA=",
+      "FacturadoBlazor.7kd0vqrvfg.wasm": "sha256-p9tOf3hwP6gt6oRseYoz+4afziw8hoHxUtTkbeHni6w="
     },
     "pdb": {
-      "FacturadorModels.vlnt7fqzqe.pdb": "sha256-w3/kGV7wX8JRh5rgypmSuIWtx5YLXtAXN92zeqjfjYM=",
-      "FacturadoBlazor.kvm7f8x97z.pdb": "sha256-kE7vl0yU9K952kx+mhMo1vjlXU/XggcmqaBta/3ibXQ="
+      "FacturadorModels.wslc23uhzo.pdb": "sha256-YEd10w4k9h8CAGVUcuoktnkSzzYPMq59+O9syPPZ/hU=",
+      "FacturadoBlazor.wjpzlaueua.pdb": "sha256-HGlfrLi0Qw4DZMLSX7CCRijUUlzwwPV9878uSE31vFU="
     }
   },
   "cacheBootResources": true,

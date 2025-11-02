@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\layout\\mainlayout.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:layout\\mainlayout.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\layout\\navmenu.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:layout\\navmenu.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\pages\\factura.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:pages\\factura.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -11,70 +19,30 @@
       "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:service\\facturaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\pages\\sp1.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:pages\\sp1.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{014FE854-6542-4507-BF50-7877326390E6}|..\\FacturadorModels\\FacturadorModels.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadormodels\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\service\\articuloservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:service\\articuloservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Alexis\\source\\repos\\FacturadorModels\\Models\\Articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\pages\\view2.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:pages\\view2.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3D35263C-A150-87ED-BD48-E9152B6BA724}|..\\FacturadorApi\\FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\models\\articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3D35263C-A150-87ED-BD48-E9152B6BA724}|..\\FacturadorApi\\FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\pages\\articulos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:pages\\articulos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\pages\\view1.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:pages\\view1.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\service\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:service\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\pages\\clientes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:pages\\clientes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\validarinputs\\clientevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:validarinputs\\clientevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\wwwroot\\js\\alert.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:wwwroot\\js\\alert.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadoblazor\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C79C541C-6705-4FC3-983F-9FFA2BF823CA}|FacturadoBlazor.csproj|solutionrelative:layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Alexis\\source\\repos\\FacturadorModels\\Models\\Factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Alexis\\source\\repos\\FacturadorApi\\Models\\Cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Alexis\\source\\repos\\FacturadorModels\\Models\\Cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -84,84 +52,98 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 18,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Clientes.razor",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\Clientes.razor",
-              "RelativeDocumentMoniker": "Pages\\Clientes.razor",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\Clientes.razor",
-              "RelativeToolTip": "Pages\\Clientes.razor",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAAAF4AAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-30T18:34:47.808Z",
-              "IsPinned": true
+              "DocumentIndex": 0,
+              "Title": "MainLayout.razor.css",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Layout\\MainLayout.razor.css",
+              "RelativeDocumentMoniker": "Layout\\MainLayout.razor.css",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Layout\\MainLayout.razor.css",
+              "RelativeToolTip": "Layout\\MainLayout.razor.css",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-02T16:12:39.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NavMenu.razor.css",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Layout\\NavMenu.razor.css",
+              "RelativeDocumentMoniker": "Layout\\NavMenu.razor.css",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Layout\\NavMenu.razor.css",
+              "RelativeToolTip": "Layout\\NavMenu.razor.css",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-02T16:12:19.635Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Articulo.cs",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\Articulo.cs",
-              "RelativeDocumentMoniker": "..\\FacturadorApi\\Models\\Articulo.cs",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\Articulo.cs",
-              "RelativeToolTip": "..\\FacturadorApi\\Models\\Articulo.cs",
+              "Title": "Sp1.razor",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\Sp1.razor",
+              "RelativeDocumentMoniker": "Pages\\Sp1.razor",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\Sp1.razor",
+              "RelativeToolTip": "Pages\\Sp1.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T22:03:26.669Z"
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T00:43:09.375Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "View2.razor",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\View2.razor",
+              "RelativeDocumentMoniker": "Pages\\View2.razor",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\View2.razor",
+              "RelativeToolTip": "Pages\\View2.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-01T21:07:15.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "View1.razor",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\View1.razor",
+              "RelativeDocumentMoniker": "Pages\\View1.razor",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\View1.razor",
+              "RelativeToolTip": "Pages\\View1.razor",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADAAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-01T20:40:45.431Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Factura.razor",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\Factura.razor",
+              "RelativeDocumentMoniker": "Pages\\Factura.razor",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\Factura.razor",
+              "RelativeToolTip": "Pages\\Factura.razor",
+              "ViewState": "AgIAADwAAAAAAAAAAAAEwFAAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-30T13:18:56.488Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Cliente.cs",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\Cliente.cs",
-              "RelativeDocumentMoniker": "..\\FacturadorApi\\Models\\Cliente.cs",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\Cliente.cs",
-              "RelativeToolTip": "..\\FacturadorApi\\Models\\Cliente.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorModels\\Models\\Cliente.cs",
+              "RelativeDocumentMoniker": "..\\FacturadorModels\\Models\\Cliente.cs",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorModels\\Models\\Cliente.cs",
+              "RelativeToolTip": "..\\FacturadorModels\\Models\\Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T22:03:24.104Z"
+              "WhenOpened": "2025-11-01T19:07:42.463Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Articulo.cs",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\FacturadorModels\\Models\\Articulo.cs",
-              "RelativeDocumentMoniker": "..\\..\\FacturadorModels\\Models\\Articulo.cs",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\FacturadorModels\\Models\\Articulo.cs",
-              "RelativeToolTip": "..\\..\\FacturadorModels\\Models\\Articulo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T18:31:54.437Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Factura.cs",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\FacturadorModels\\Models\\Factura.cs",
-              "RelativeDocumentMoniker": "..\\..\\FacturadorModels\\Models\\Factura.cs",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\FacturadorModels\\Models\\Factura.cs",
-              "RelativeToolTip": "..\\..\\FacturadorModels\\Models\\Factura.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAmwA0AAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T18:49:25.872Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ClienteValidator.cs",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\ValidarInputs\\ClienteValidator.cs",
-              "RelativeDocumentMoniker": "ValidarInputs\\ClienteValidator.cs",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\ValidarInputs\\ClienteValidator.cs",
-              "RelativeToolTip": "ValidarInputs\\ClienteValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T15:32:43.141Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 10,
               "Title": "Cliente.cs",
               "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\FacturadorApi\\Models\\Cliente.cs",
               "RelativeDocumentMoniker": "..\\..\\FacturadorApi\\Models\\Cliente.cs",
@@ -173,127 +155,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Cliente.cs",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Models\\Cliente.cs",
-              "RelativeDocumentMoniker": "Models\\Cliente.cs",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Models\\Cliente.cs",
-              "RelativeToolTip": "Models\\Cliente.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T15:13:11.773Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "alert.js",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\wwwroot\\js\\alert.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\alert.js",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\wwwroot\\js\\alert.js",
-              "RelativeToolTip": "wwwroot\\js\\alert.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-10-31T14:52:57.525Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Home.razor",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\Home.razor",
-              "RelativeDocumentMoniker": "Pages\\Home.razor",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\Home.razor",
-              "RelativeToolTip": "Pages\\Home.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-31T04:09:11.93Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "MainLayout.razor",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Layout\\MainLayout.razor",
-              "RelativeDocumentMoniker": "Layout\\MainLayout.razor",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Layout\\MainLayout.razor",
-              "RelativeToolTip": "Layout\\MainLayout.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-31T04:08:09.52Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "index.html",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\wwwroot\\index.html",
-              "RelativeDocumentMoniker": "wwwroot\\index.html",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\wwwroot\\index.html",
-              "RelativeToolTip": "wwwroot\\index.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-10-31T04:02:51.005Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "Layout\\NavMenu.razor",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "Layout\\NavMenu.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-31T03:14:22.99Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "app.css",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\wwwroot\\css\\app.css",
-              "RelativeDocumentMoniker": "wwwroot\\css\\app.css",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\wwwroot\\css\\app.css",
-              "RelativeToolTip": "wwwroot\\css\\app.css",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAwwIEAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-10-31T03:08:41.143Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "FacturaService.cs",
               "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Service\\FacturaService.cs",
               "RelativeDocumentMoniker": "Service\\FacturaService.cs",
               "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Service\\FacturaService.cs",
               "RelativeToolTip": "Service\\FacturaService.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAowC4AAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAABoAAAAAAAAAAAAwwDoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-30T18:56:16.04Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Cliente.cs",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\FacturadorModels\\Models\\Cliente.cs",
-              "RelativeDocumentMoniker": "..\\..\\FacturadorModels\\Models\\Cliente.cs",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\FacturadorModels\\Models\\Cliente.cs",
-              "RelativeToolTip": "..\\..\\FacturadorModels\\Models\\Cliente.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T18:43:53.116Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Articulos.razor",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\Articulos.razor",
-              "RelativeDocumentMoniker": "Pages\\Articulos.razor",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\Articulos.razor",
-              "RelativeToolTip": "Pages\\Articulos.razor",
-              "ViewState": "AgIAALcAAAAAAAAAAAAtwNUAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-30T18:38:25.096Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "ClienteService.cs",
               "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Service\\ClienteService.cs",
               "RelativeDocumentMoniker": "Service\\ClienteService.cs",
@@ -305,28 +179,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Factura.razor",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\Factura.razor",
-              "RelativeDocumentMoniker": "Pages\\Factura.razor",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Pages\\Factura.razor",
-              "RelativeToolTip": "Pages\\Factura.razor",
-              "ViewState": "AgIAAKIBAAAAAAAAAAAAALUBAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-30T13:18:56.488Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "ArticuloService.cs",
               "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Service\\ArticuloService.cs",
               "RelativeDocumentMoniker": "Service\\ArticuloService.cs",
               "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadoBlazor\\Service\\ArticuloService.cs",
               "RelativeToolTip": "Service\\ArticuloService.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAawEEAAABcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAiwBYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T03:54:47.489Z"
+              "WhenOpened": "2025-10-30T03:54:47.489Z",
+              "EditorCaption": ""
             }
           ]
         }

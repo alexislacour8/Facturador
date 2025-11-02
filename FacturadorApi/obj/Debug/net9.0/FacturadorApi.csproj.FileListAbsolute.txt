@@ -488,10 +488,10 @@ C:\Users\Alexis\source\repos\Sistemafactura\FacturadorApi\obj\Debug\net9.0\stati
 C:\Users\Alexis\source\repos\Sistemafactura\FacturadorApi\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\Alexis\source\repos\Sistemafactura\FacturadorApi\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\Alexis\source\repos\Sistemafactura\FacturadorApi\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-C:\Users\Alexis\source\repos\Sistemafactura\FacturadorApi\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\Alexis\source\repos\Sistemafactura\FacturadorApi\obj\Debug\net9.0\Facturad.BB85CDDA.Up2Date
 C:\Users\Alexis\source\repos\Sistemafactura\FacturadorApi\obj\Debug\net9.0\FacturadorApi.dll
 C:\Users\Alexis\source\repos\Sistemafactura\FacturadorApi\obj\Debug\net9.0\refint\FacturadorApi.dll
 C:\Users\Alexis\source\repos\Sistemafactura\FacturadorApi\obj\Debug\net9.0\FacturadorApi.pdb
 C:\Users\Alexis\source\repos\Sistemafactura\FacturadorApi\obj\Debug\net9.0\FacturadorApi.genruntimeconfig.cache
 C:\Users\Alexis\source\repos\Sistemafactura\FacturadorApi\obj\Debug\net9.0\ref\FacturadorApi.dll
+C:\Users\Alexis\source\repos\Sistemafactura\FacturadorApi\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

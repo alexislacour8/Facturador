@@ -11,28 +11,52 @@
       "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:daos\\dao_factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\daos\\dao_articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:daos\\dao_articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\models\\articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:models\\articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\controllers\\articulocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:controllers\\articulocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\models\\factura_cabecera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:models\\factura_cabecera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\fomrsinputs\\formsfactura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:fomrsinputs\\formsfactura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\models\\factura_detalle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:models\\factura_detalle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\controllers\\articulocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:controllers\\articulocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\fomrsinputs\\forms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:fomrsinputs\\forms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\fomrsinputs\\formsfactura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:fomrsinputs\\formsfactura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\models\\vw_factura_cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:models\\vw_factura_cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\models\\vw_factura_resuman.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:models\\vw_factura_resuman.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\models\\articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:models\\articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\daos\\dao_articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|solutionrelative:daos\\dao_articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6EA1CED9-BE31-D96D-7E79-737C0AD2CF17}|FacturadorApi.csproj|c:\\users\\alexis\\source\\repos\\sistemafactura\\facturadorapi\\daos\\dao_clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,49 +70,115 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 12,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "vw_Factura_Resuman.cs",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\vw_Factura_Resuman.cs",
+              "RelativeDocumentMoniker": "Models\\vw_Factura_Resuman.cs",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\vw_Factura_Resuman.cs",
+              "RelativeToolTip": "Models\\vw_Factura_Resuman.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T19:32:26.599Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "vw_Factura_Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\vw_Factura_Cliente.cs",
+              "RelativeDocumentMoniker": "Models\\vw_Factura_Cliente.cs",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\vw_Factura_Cliente.cs",
+              "RelativeToolTip": "Models\\vw_Factura_Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T19:32:25.299Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Factura_Detalle.cs",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\Factura_Detalle.cs",
+              "RelativeDocumentMoniker": "Models\\Factura_Detalle.cs",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\Factura_Detalle.cs",
+              "RelativeToolTip": "Models\\Factura_Detalle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T19:32:18.667Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Dao_Articulo.cs",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Daos\\Dao_Articulo.cs",
-              "RelativeDocumentMoniker": "Daos\\Dao_Articulo.cs",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Daos\\Dao_Articulo.cs",
-              "RelativeToolTip": "Daos\\Dao_Articulo.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAvwA8AAABaAAAAAAAAAA==",
+              "Title": "Factura_Cabecera.cs",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\Factura_Cabecera.cs",
+              "RelativeDocumentMoniker": "Models\\Factura_Cabecera.cs",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\Factura_Cabecera.cs",
+              "RelativeToolTip": "Models\\Factura_Cabecera.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T18:39:36.97Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-01T19:32:16.336Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ArticuloController.cs",
-              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Controllers\\ArticuloController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ArticuloController.cs",
-              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Controllers\\ArticuloController.cs",
-              "RelativeToolTip": "Controllers\\ArticuloController.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAnwIAAAAAIAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\Cliente.cs",
+              "RelativeDocumentMoniker": "Models\\Cliente.cs",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\Cliente.cs",
+              "RelativeToolTip": "Models\\Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T18:37:00.315Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-01T19:32:13.68Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 12,
               "Title": "Articulo.cs",
               "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\Articulo.cs",
               "RelativeDocumentMoniker": "Models\\Articulo.cs",
               "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Models\\Articulo.cs",
               "RelativeToolTip": "Models\\Articulo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T18:30:08.391Z"
+              "WhenOpened": "2025-11-01T19:32:10.366Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T19:31:28.055Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Dao_Articulo.cs",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Daos\\Dao_Articulo.cs",
+              "RelativeDocumentMoniker": "Daos\\Dao_Articulo.cs",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Daos\\Dao_Articulo.cs",
+              "RelativeToolTip": "Daos\\Dao_Articulo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T18:39:36.97Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ArticuloController.cs",
+              "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Controllers\\ArticuloController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ArticuloController.cs",
+              "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Controllers\\ArticuloController.cs",
+              "RelativeToolTip": "Controllers\\ArticuloController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T18:37:00.315Z"
             },
             {
               "$type": "Document",
@@ -98,32 +188,31 @@
               "RelativeDocumentMoniker": "Daos\\Dao_Factura.cs",
               "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Daos\\Dao_Factura.cs",
               "RelativeToolTip": "Daos\\Dao_Factura.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAowHMAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAcwGsAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T17:17:01.062Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-31T17:17:01.062Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "FormsFactura.cs",
               "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\FomrsInputs\\FormsFactura.cs",
               "RelativeDocumentMoniker": "FomrsInputs\\FormsFactura.cs",
               "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\FomrsInputs\\FormsFactura.cs",
               "RelativeToolTip": "FomrsInputs\\FormsFactura.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-31T17:13:03.726Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Forms.cs",
               "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\FomrsInputs\\Forms.cs",
               "RelativeDocumentMoniker": "FomrsInputs\\Forms.cs",
               "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\FomrsInputs\\Forms.cs",
               "RelativeToolTip": "FomrsInputs\\Forms.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-31T17:12:22.289Z"
             },
@@ -135,32 +224,32 @@
               "RelativeDocumentMoniker": "Controllers\\FacturaController.cs",
               "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Controllers\\FacturaController.cs",
               "RelativeToolTip": "Controllers\\FacturaController.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAgwH8AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAgwI8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-31T17:11:53.851Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 14,
               "Title": "Dao_Clientes.cs",
               "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Daos\\Dao_Clientes.cs",
               "RelativeDocumentMoniker": "Daos\\Dao_Clientes.cs",
               "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Daos\\Dao_Clientes.cs",
               "RelativeToolTip": "Daos\\Dao_Clientes.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAIwBYAAABVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-31T15:02:05.04Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "ClienteController.cs",
               "DocumentMoniker": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Controllers\\ClienteController.cs",
               "RelativeDocumentMoniker": "Controllers\\ClienteController.cs",
               "ToolTip": "C:\\Users\\Alexis\\source\\repos\\Sistemafactura\\FacturadorApi\\Controllers\\ClienteController.cs",
               "RelativeToolTip": "Controllers\\ClienteController.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAnwD4AAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAmwAIAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-31T14:46:04.296Z"
             }
