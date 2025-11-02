@@ -74,12 +74,14 @@
                     }
                     else
                     {
+                        @if (!editar)
+                        {
                         <div class="mb-3">
                             <label class="form-label">Codigo</label>
                             <input type="text" class="form-control" @bind="nuevoArticulo.ArtId" />
                             @MostrarError("Nombre")
                         </div>
-                 
+                        }
                         <div class="mb-3">
                             <label class="form-label">Nombre</label>
                             <input type="text" class="form-control" @bind="nuevoArticulo.Nombre" />

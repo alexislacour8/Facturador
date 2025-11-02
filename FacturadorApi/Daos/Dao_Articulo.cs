@@ -23,27 +23,19 @@ namespace FacturadorApi.Daos
 
             return dataList;
         }
-        public Articulo RegisterArticuloAsync(string nombre, decimal precio, decimal cantidad)
+        public Articulo RegisterArticuloAsync(string idar,string nombre, decimal precio, decimal cantidad)
         {
             try
             {
                 if (string.IsNullOrWhiteSpace(nombre) || precio < 0 || cantidad < 0)
                     return null;
 
-                // Generar código único
-                string codigo;
-                do
-                {
-                    codigo = GenerateCodigoBarra();
-                } while (_context.Articulos.Any(a => a.ART_ID == codigo));
-
-                // Crear el artículo
                 var articulo = new Articulo
                 {
                     Nombre = nombre,
                     Precio = precio,
                     Stock = cantidad,
-                    ART_ID = codigo
+                    ART_ID = idar
                 };
 
                 this._context.Articulos.Add(articulo);
@@ -95,12 +87,7 @@ namespace FacturadorApi.Daos
                 return null;
             }
         }
-        // Método para generar un código de barras aleatorio (puedes personalizar el formato)
-        private string GenerateCodigoBarra()
-        {
-            var random = new Random();
-            return random.Next(100000, 999999).ToString(); // Código de 6 dígitos
-        }
+        
 
     }
 }

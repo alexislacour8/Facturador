@@ -307,6 +307,126 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private List<string> listaEstados = new() { "Pendiente", "Facturado" };
     private List<FacturaVista> facturas;
     private bool mostrarDetalleModal, mostrarCrearFacturaModal, mostrarEditarFacturaModal, mostrarEliminarFacturaModal;
@@ -388,9 +508,20 @@
     private void CancelarEdicion() => detalleEnEdicion.ART_ID = "";
     private async Task GuardarEdicion(FacturaDetalleCliente o)
     {
+    
+        foreach (var item in facturaDetalleSeleccionada.Detalles)
+        {
+
+            item.Cant = detalleEnEdicion.Cant;
+            item.Precio = detalleEnEdicion.Precio;
+
+            item.Monto = detalleEnEdicion.Monto;
+        }
         await FacturaService.UpdateFacturaDDetalle(facturaDetalleSeleccionada);
 
         detalleEnEdicion.ART_ID = "";
+        facturas = await FacturaService.ObtenerFacturaAsync();
+        MostrarAlerta("Factura guardada correctamente.", "success");
     }
 
     private void EliminardetalleFactura(FacturaDetalleCliente d)

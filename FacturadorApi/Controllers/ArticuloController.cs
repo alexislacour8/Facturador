@@ -22,7 +22,7 @@ namespace FacturadorApi.Controllers
             this.dao_Articulo = new Dao_Articulo(context);
         }
         // GET: api/<ArticuloController>
-        [HttpGet]
+        [HttpGet("GetArticulo")]
         public IActionResult GetArticulo()
         {
             try
@@ -51,12 +51,13 @@ namespace FacturadorApi.Controllers
         }
 
        
-        [HttpPost]
-        public IActionResult AddArticulo([FromBody] Articulo articulo)
+        [HttpPost("AddArticulo")]
+        public IActionResult AddArticulo(Articulo articulo)
         {
             try
             {
                 var productosRegistrados = this.dao_Articulo.RegisterArticuloAsync(
+                    articulo.ART_ID,
                     articulo.Nombre,
                     articulo.Precio,
                     articulo.Stock ?? 0
@@ -75,7 +76,7 @@ namespace FacturadorApi.Controllers
             }
         }
 
-        public partial class Articulo
+        public partial class Articuloupdate
         {
             public string Nombre { get; set; } = null!;
             public decimal Precio { get; set; }
@@ -83,8 +84,8 @@ namespace FacturadorApi.Controllers
         }
 
         // PUT api/<ArticuloController>/5
-        [HttpPut("{id}")]
-        public IActionResult UpdateArticulo(string id, [FromBody] Articulo articulo)
+        [HttpPut("UpdateArticulo/{id}")]
+        public IActionResult UpdateArticulo(string id, [FromBody] Articuloupdate articulo)
         {
             try
             {
