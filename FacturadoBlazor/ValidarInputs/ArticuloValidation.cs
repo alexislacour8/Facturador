@@ -7,6 +7,9 @@ namespace FacturadoBlazor.ValidarInputs
     {
         public ArticuloValidation()
         {
+
+            RuleFor(c => c.ArtId)
+                .NotEmpty().WithMessage("el Codigo es obligatoria.");
             RuleFor(c => c.Nombre)
                 .NotEmpty().WithMessage("el nombre es obligatoria.");
 
